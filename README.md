@@ -204,34 +204,37 @@ npm run build
 # Run linter
 npm run lint
 ```
-- `npm run test:ui` - Abre a interface visual do Vitest
-- `npm run test:coverage` - Executa os testes com relatório de cobertura
+
+### Testing
+
+- `npm run test:ui` - Opens Vitest visual interface
+- `npm run test:coverage` - Runs tests with coverage report
 
 ### Storybook
 
-- `npm run storybook` - Inicia o Storybook em modo desenvolvimento
-- `npm run build-storybook` - Constrói o Storybook para produção
+- `npm run storybook` - Starts Storybook in development mode
+- `npm run build-storybook` - Builds Storybook for production
 
-## Configuração de Testes
+## Test Configuration
 
-O projeto está configurado com:
+The project is configured with:
 
-- **Vitest** - Framework de testes rápido
-- **React Testing Library** - Utilitários para testar componentes React
-- **Jest DOM** - Matchers customizados para o DOM
-- **jsdom** - Ambiente DOM simulado para testes
-- **User Event** - Simulação de interações do usuário
+- **Vitest** - Fast testing framework
+- **React Testing Library** - Utilities for testing React components
+- **Jest DOM** - Custom DOM matchers
+- **jsdom** - Simulated DOM environment for tests
+- **User Event** - User interaction simulation
 
-### Arquivos de Configuração
+### Configuration Files
 
-- `vite.config.ts` - Configuração do Vitest
-- `setup-test.ts` - Configuração inicial dos testes
-- `src/types/test.d.ts` - Tipos do TypeScript para testes
-- `src/test-utils.tsx` - Utilitários reutilizáveis para testes
+- `vite.config.ts` - Vitest configuration
+- `setup-test.ts` - Initial test setup
+- `src/types/test.d.ts` - TypeScript types for tests
+- `src/test-utils.tsx` - Reusable test utilities
 
-## Exemplos de Teste
+## Test Examples
 
-### Teste Básico de Componente
+### Basic Component Test
 
 ```typescript
 import { renderWithChakra } from '../test-utils';
@@ -243,7 +246,7 @@ test('renders button with text', () => {
 });
 ```
 
-### Teste de Componente com React Hook Form
+### React Hook Form Component Test
 
 ```typescript
 import { useForm } from 'react-hook-form';
@@ -265,60 +268,64 @@ test('handles user input correctly', async () => {
 });
 ```
 
-## Utilitários de Teste
+## Test Utilities
 
-O arquivo `src/test-utils.tsx` exporta:
+The `src/test-utils.tsx` file exports:
 
-- `ChakraWrapper` - Componente wrapper com contexto do Chakra UI
-- `renderWithChakra` - Função que renderiza componentes com o contexto necessário
+- `ChakraWrapper` - Wrapper component with Chakra UI context
+- `renderWithChakra` - Function that renders components with necessary context
 
-## Estrutura do Projeto
+## Project Structure
 
 ```
 src/
 ├── components/
 │   ├── Button/
-│   │   ├── button.tsx                    # Componente
-│   │   ├── button.stories.tsx            # Stories do Storybook
-│   │   └── button.test.tsx               # Testes unitários
+│   │   ├── button.tsx                    # Component
+│   │   ├── button.stories.tsx            # Storybook stories
+│   │   └── button.test.tsx               # Unit tests
 │   └── RhfInput/
-│       ├── rhf-input.tsx                 # Componente
-│       ├── rhf-input.types.tsx           # Tipos TypeScript
-│       ├── rhf-input.stories.tsx         # Stories do Storybook
-│       └── rhf-input.test.tsx            # Testes unitários
+│       ├── rhf-input.tsx                 # Component
+│       ├── rhf-input.types.tsx           # TypeScript types
+│       ├── rhf-input.stories.tsx         # Storybook stories
+│       └── rhf-input.test.tsx            # Unit tests
 ├── theme/
-│   └── index.ts                          # Configuração do tema
+│   └── index.ts                          # Theme configuration
 ├── types/
-│   └── test.d.ts                         # Tipos para testes
-├── test-utils.tsx                        # Utilitários reutilizáveis
-├── setup-test.ts                         # Configuração inicial dos testes
-└── vite.config.ts                        # Configuração do Vite/Vitest
+│   └── test.d.ts                         # TypeScript types for tests
+├── test-utils.tsx                        # Reusable utilities
+├── setup-test.ts                         # Initial test setup
+└── vite.config.ts                        # Vite/Vitest configuration
 ```
 
-## Comandos Úteis
+## Useful Commands
 
 ```bash
-# Executar testes em modo watch
+# Run tests in watch mode
 npm test
 
-# Executar testes uma vez
+# Run tests once
 npm run test:run
 
-# Abrir interface visual do Vitest
+# Open Vitest visual interface
 npm run test:ui
 
-# Executar testes com cobertura
+# Run tests with coverage
 npm run test:coverage
 
-# Atualizar snapshots
+# Update snapshots
 npm test -- -u
 
-# Executar apenas testes do Button
+# Run only Button tests
 npm test -- Button
 
-# Executar apenas testes do RhfInput
+# Run only RhfInput tests
 npm test -- RhfInput
 
-# Executar testes de componentes específicos
+# Run specific component tests
 npm test -- components/
 ```
+
+## License
+
+ISC
