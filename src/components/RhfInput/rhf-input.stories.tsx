@@ -47,9 +47,9 @@ export const Disabled: Story = {
   },
   args: {
     disabled: true,
-    name: 'disabled',
+    name: 'name',
     defaultValue: '',
-    label: 'Disabled Input',
+    label: 'Nome',
   },
 };
 
