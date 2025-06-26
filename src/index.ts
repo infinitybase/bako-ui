@@ -1,5 +1,6 @@
 // Components
 export { Button, type ButtonProps } from './components/Button';
+export { RhfInput, type RhfInputProps } from './components/RhfInput';
 
 // Icons
 export * from './icons';
