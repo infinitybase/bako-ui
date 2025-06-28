@@ -45,7 +45,10 @@
   "devDependencies": {
     "@biomejs/biome": "2.0.2",
     "@chromatic-com/storybook": "^4.0.0",
-    "@storybook/addon-docs": "^9.0.12",
+    "@storybook/addon-a11y": "^9.0.14",
+    "@storybook/addon-docs": "^9.0.14",
+    "@storybook/addon-essentials": "^9.0.0-alpha.12",
+    "@storybook/blocks": "^9.0.0-alpha.17",
     "@storybook/react-vite": "^9.0.12",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",

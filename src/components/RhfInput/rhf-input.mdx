@@ -1,0 +1,569 @@
+import { Meta } from '@storybook/blocks';
+import { RhfInput } from './rhf-input';
+
+<Meta title="bako ui/Form/RhfInput" component={RhfInput} />
+
+# RhfInput
+
+The RhfInput component is an input integrated with React Hook Form that provides validation, error states, and a consistent design with floating labels.
+
+## Import
+
+```tsx
+import { RhfInput } from '@bako/ui';
+```
+
+## Basic Usage
+
+```tsx
+import { RhfInput } from '@bako/ui';
+import { useForm } from 'react-hook-form';
+
+function BasicExample() {
+  const { control } = useForm();
+
+  return (
+    <RhfInput
+      control={control}
+      name="username"
+      label="Username"
+    />
+  );
+}
+```
+
+## React Hook Form Integration
+
+The RhfInput is designed to work seamlessly with React Hook Form:
+
+```tsx
+import { RhfInput } from '@bako/ui';
+import { useForm } from 'react-hook-form';
+import { Button } from '@bako/ui';
+
+interface FormData {
+  email: string;
+  password: string;
+}
+
+function FormExample() {
+  const { control, handleSubmit, formState: { errors } } = useForm<FormData>();
+
+  const onSubmit = (data: FormData) => {
+    console.log(data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <RhfInput
+        control={control}
+        name="email"
+        label="Email"
+        type="email"
+        error={errors.email}
+        rules={{
+          required: 'Email is required',
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            message: 'Invalid email'
+          }
+        }}
+      />
+      
+      <RhfInput
+        control={control}
+        name="password"
+        label="Password"
+        type="password"
+        error={errors.password}
+        rules={{
+          required: 'Password is required',
+          minLength: {
+            value: 8,
+            message: 'Password must be at least 8 characters'
+          }
+        }}
+      />
+      
+      <Button type="submit">Login</Button>
+    </form>
+  );
+}
+```
+
+## Validation States
+
+### Field with Error
+
+```tsx
+import { RhfInput } from '@bako/ui';
+import { useForm } from 'react-hook-form';
+
+function ErrorExample() {
+  const { control } = useForm();
+
+  return (
+    <RhfInput
+      control={control}
+      name="email"
+      label="Email"
+      error={{
+        type: 'required',
+        message: 'This field is required'
+      }}
+    />
+  );
+}
+```
+
+### Disabled Field
+
+```tsx
+import { RhfInput } from '@bako/ui';
+import { useForm } from 'react-hook-form';
+
+function DisabledExample() {
+  const { control } = useForm();
+
+  return (
+    <RhfInput
+      control={control}
+      name="readonly"
+      label="Read-only field"
+      disabled
+      defaultValue="Fixed value"
+    />
+  );
+}
+```
+
+## Helper Text
+
+```tsx
+import { RhfInput } from '@bako/ui';
+import { useForm } from 'react-hook-form';
+
+function HelperTextExample() {
+  const { control } = useForm();
+
+  return (
+    <RhfInput
+      control={control}
+      name="password"
+      label="Password"
+      type="password"
+      helperText="Password must be at least 8 characters"
+    />
+  );
+}
+```
+
+## Addons and Elements
+
+### Start Addon
+
+```tsx
+import { RhfInput } from '@bako/ui';
+import { useForm } from 'react-hook-form';
+
+function StartAddonExample() {
+  const { control } = useForm();
+
+  return (
+    <RhfInput
+      control={control}
+      name="website"
+      label="Website"
+      slotProps={{
+        inputGroup: {
+          startAddon: 'https://'
+        }
+      }}
+    />
+  );
+}
+```
+
+### End Addon
+
+```tsx
+import { RhfInput } from '@bako/ui';
+import { useForm } from 'react-hook-form';
+
+function EndAddonExample() {
+  const { control } = useForm();
+
+  return (
+    <RhfInput
+      control={control}
+      name="domain"
+      label="Domain"
+      slotProps={{
+        inputGroup: {
+          endAddon: '.com'
+        }
+      }}
+    />
+  );
+}
+```
+
+### Start Icon
+
+```tsx
+import { RhfInput } from '@bako/ui';
+import { useForm } from 'react-hook-form';
+import { Icon } from '@chakra-ui/react';
+import { WalletIcon } from '@bako/ui/icons';
+
+function StartIconExample() {
+  const { control } = useForm();
+
+  return (
+    <RhfInput
+      control={control}
+      name="wallet"
+      label="Wallet Address"
+      slotProps={{
+        inputGroup: {
+          startElement: <Icon as={WalletIcon} size="md" />
+        }
+      }}
+    />
+  );
+}
+```
+
+### End Icon
+
+```tsx
+import { RhfInput } from '@bako/ui';
+import { useForm } from 'react-hook-form';
+import { Icon } from '@chakra-ui/react';
+import { WalletIcon } from '@bako/ui/icons';
+
+function EndIconExample() {
+  const { control } = useForm();
+
+  return (
+    <RhfInput
+      control={control}
+      name="account"
+      label="Account"
+      slotProps={{
+        inputGroup: {
+          endElement: <Icon as={WalletIcon} size="md" />
+        }
+      }}
+    />
+  );
+}
+```
+
+## Sizes
+
+```tsx
+import { RhfInput } from '@bako/ui';
+import { useForm } from 'react-hook-form';
+import { Stack } from '@chakra-ui/react';
+
+function SizesExample() {
+  const { control } = useForm();
+
+  return (
+    <Stack gap={4}>
+      <RhfInput
+        control={control}
+        name="small"
+        label="Small Input"
+        slotProps={{
+          input: { size: 'sm' }
+        }}
+      />
+      
+      <RhfInput
+        control={control}
+        name="medium"
+        label="Medium Input"
+        slotProps={{
+          input: { size: 'md' }
+        }}
+      />
+      
+      <RhfInput
+        control={control}
+        name="large"
+        label="Large Input"
+        slotProps={{
+          input: { size: 'lg' }
+        }}
+      />
+      
+      <RhfInput
+        control={control}
+        name="xlarge"
+        label="Extra Large Input"
+        slotProps={{
+          input: { size: 'xl' }
+        }}
+      />
+    </Stack>
+  );
+}
+```
+
+## Input Types
+
+The RhfInput supports all HTML input types:
+
+```tsx
+import { RhfInput } from '@bako/ui';
+import { useForm } from 'react-hook-form';
+import { Stack } from '@chakra-ui/react';
+
+function InputTypesExample() {
+  const { control } = useForm();
+
+  return (
+    <Stack gap={4}>
+      <RhfInput
+        control={control}
+        name="text"
+        label="Text"
+        type="text"
+      />
+      
+      <RhfInput
+        control={control}
+        name="email"
+        label="Email"
+        type="email"
+      />
+      
+      <RhfInput
+        control={control}
+        name="password"
+        label="Password"
+        type="password"
+      />
+      
+      <RhfInput
+        control={control}
+        name="number"
+        label="Number"
+        type="number"
+      />
+      
+      <RhfInput
+        control={control}
+        name="tel"
+        label="Phone"
+        type="tel"
+      />
+      
+      <RhfInput
+        control={control}
+        name="url"
+        label="URL"
+        type="url"
+      />
+    </Stack>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `control` | `Control<TFieldValues>` | - | React Hook Form control instance |
+| `name` | `FieldPath<TFieldValues>` | - | Field name in the form |
+| `label` | `string` | - | Label text (required) |
+| `defaultValue` | `any` | - | Default value for the field |
+| `type` | `string` | `'text'` | HTML input type |
+| `disabled` | `boolean` | `false` | Whether the input is disabled |
+| `error` | `FieldError` | - | React Hook Form error object |
+| `helperText` | `string` | - | Helper text displayed below the input |
+| `slotProps` | `SlotProps` | - | Props to customize internal elements |
+
+### SlotProps
+
+```tsx
+interface SlotProps {
+  inputGroup?: Omit<InputGroupProps, 'children'>;
+  input?: Omit<InputProps, 'value' | 'onChange' | 'placeholder' | 'name' | 'children' | 'variant'>;
+  label?: FieldLabelProps;
+  root?: BoxProps;
+}
+```
+
+## Floating Labels
+
+The RhfInput uses floating labels that animate automatically:
+
+- When the field is empty and not focused: the label is positioned in the center of the input
+- When the field has a value or is focused: the label moves to the top with reduced size
+- The animation is smooth and responsive
+
+## Accessibility
+
+The RhfInput implements accessibility best practices:
+
+- Labels correctly associated with inputs
+- Keyboard navigation support
+- ARIA attributes for error states
+- Screen reader friendly
+- Clearly defined focusable states
+
+## Best Practices
+
+### ✅ Do
+
+- Always provide a descriptive `label`
+- Use appropriate `type` for each field (email, password, etc.)
+- Implement validation using React Hook Form `rules`
+- Use `helperText` to guide the user
+- Keep error messages clear and actionable
+
+### ❌ Don't
+
+- Don't omit the `label` - it's required for accessibility
+- Avoid labels that are too long or ambiguous
+- Don't use `placeholder` as a substitute for the label
+- Avoid overly restrictive validation
+- Don't ignore error states
+
+## Advanced Examples
+
+### Complete Form with Validation
+
+```tsx
+import { RhfInput, Button } from '@bako/ui';
+import { useForm } from 'react-hook-form';
+import { Stack } from '@chakra-ui/react';
+
+interface UserForm {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  website: string;
+}
+
+function CompleteFormExample() {
+  const { 
+    control, 
+    handleSubmit, 
+    formState: { errors, isSubmitting } 
+  } = useForm<UserForm>();
+
+  const onSubmit = async (data: UserForm) => {
+    // Simulate submission
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    console.log(data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Stack gap={4}>
+        <RhfInput
+          control={control}
+          name="firstName"
+          label="First Name"
+          error={errors.firstName}
+          rules={{ required: 'First name is required' }}
+        />
+        
+        <RhfInput
+          control={control}
+          name="lastName"
+          label="Last Name"
+          error={errors.lastName}
+          rules={{ required: 'Last name is required' }}
+        />
+        
+        <RhfInput
+          control={control}
+          name="email"
+          label="Email"
+          type="email"
+          error={errors.email}
+          rules={{
+            required: 'Email is required',
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: 'Invalid email'
+            }
+          }}
+        />
+        
+        <RhfInput
+          control={control}
+          name="phone"
+          label="Phone"
+          type="tel"
+          error={errors.phone}
+          helperText="Format: (11) 99999-9999"
+        />
+        
+        <RhfInput
+          control={control}
+          name="website"
+          label="Website"
+          type="url"
+          error={errors.website}
+          slotProps={{
+            inputGroup: {
+              startAddon: 'https://'
+            }
+          }}
+        />
+        
+        <Button 
+          type="submit" 
+          loading={isSubmitting}
+          loadingText="Saving..."
+        >
+          Save
+        </Button>
+      </Stack>
+    </form>
+  );
+}
+```
+
+### Masked Input
+
+```tsx
+import { RhfInput } from '@bako/ui';
+import { useForm } from 'react-hook-form';
+
+function MaskedInputExample() {
+  const { control } = useForm();
+
+  const formatCPF = (value: string) => {
+    return value
+      .replace(/\D/g, '')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d{1,2})/, '$1-$2')
+      .replace(/(-\d{2})\d+?$/, '$1');
+  };
+
+  return (
+    <RhfInput
+      control={control}
+      name="cpf"
+      label="CPF"
+      slotProps={{
+        input: {
+          onChange: (e) => {
+            e.target.value = formatCPF(e.target.value);
+          }
+        }
+      }}
+      helperText="Format: 000.000.000-00"
+    />
+  );
+}
+```

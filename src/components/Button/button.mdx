@@ -1,0 +1,252 @@
+import { Meta } from '@storybook/blocks';
+import Button from './button';
+
+<Meta title="bako ui/Button" component={Button} />
+
+# Button
+
+The Button component is a wrapper around Chakra UI Button that provides a consistent and customizable interface for buttons throughout the Bako UI application.
+
+## Import
+
+```tsx
+import { Button } from '@bako/ui';
+```
+
+## Basic Usage
+
+```tsx
+import { Button } from '@bako/ui';
+
+function BasicExample() {
+  return <Button>Click me</Button>;
+}
+```
+
+## Variants
+
+The Button supports multiple variants for different usage contexts:
+
+```tsx
+import { Button } from '@bako/ui';
+import { HStack } from '@chakra-ui/react';
+
+function VariantsExample() {
+  return (
+    <HStack gap={4}>
+      <Button variant="solid">Solid</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="plain">Plain</Button>
+      <Button variant="shaded">Shaded</Button>
+    </HStack>
+  );
+}
+```
+
+### Available Variants:
+- **solid** - Button with solid background (default)
+- **outline** - Button with border and transparent background
+- **ghost** - Button without border with transparent background
+- **plain** - Minimalist button without decorations
+- **shaded** - Button with subtle shadow
+
+## Sizes
+
+```tsx
+import { Button } from '@bako/ui';
+import { HStack } from '@chakra-ui/react';
+
+function SizesExample() {
+  return (
+    <HStack gap={4}>
+      <Button size="xs">Extra Small</Button>
+      <Button size="sm">Small</Button>
+      <Button size="md">Medium</Button>
+      <Button size="lg">Large</Button>
+    </HStack>
+  );
+}
+```
+
+### Available Sizes:
+- **xs** - Extra small
+- **sm** - Small
+- **md** - Medium (default)
+- **lg** - Large
+
+## Color Palettes
+
+The Button supports different color palettes:
+
+```tsx
+import { Button } from '@bako/ui';
+import { HStack, Stack } from '@chakra-ui/react';
+
+function ColorPaletteExample() {
+  const colors = ['gray', 'green', 'blue', 'red', 'orange', 'yellow'];
+  
+  return (
+    <Stack gap={4}>
+      {colors.map((color) => (
+        <HStack key={color} gap={4}>
+          <Button colorPalette={color} variant="solid">{color}</Button>
+          <Button colorPalette={color} variant="outline">{color}</Button>
+          <Button colorPalette={color} variant="ghost">{color}</Button>
+        </HStack>
+      ))}
+    </Stack>
+  );
+}
+```
+
+## States
+
+### Disabled
+
+```tsx
+import { Button } from '@bako/ui';
+
+function DisabledExample() {
+  return <Button disabled>Disabled Button</Button>;
+}
+```
+
+### Loading
+
+```tsx
+import { Button } from '@bako/ui';
+import { HStack } from '@chakra-ui/react';
+
+function LoadingExample() {
+  return (
+    <HStack gap={4}>
+      <Button loading>Loading</Button>
+      <Button loading loadingText="Loading...">Loading with text</Button>
+      <Button loading loadingText="Saving..." spinnerPlacement="end">
+        Save
+      </Button>
+    </HStack>
+  );
+}
+```
+
+## With Icons
+
+### Right Icon
+
+```tsx
+import { Button } from '@bako/ui';
+import { WalletIcon } from '@bako/ui/icons';
+
+function RightIconExample() {
+  return (
+    <Button>
+      Connect Wallet
+      <WalletIcon boxSize="5" />
+    </Button>
+  );
+}
+```
+
+### Left Icon
+
+```tsx
+import { Button } from '@bako/ui';
+import { WalletIcon } from '@bako/ui/icons';
+
+function LeftIconExample() {
+  return (
+    <Button>
+      <WalletIcon boxSize="5" />
+      Connect Wallet
+    </Button>
+  );
+}
+```
+
+## Props
+
+The Button accepts all Chakra UI Button props, plus the following customizations:
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'solid' \| 'outline' \| 'ghost' \| 'plain' \| 'shaded'` | `'solid'` | Visual variant of the button |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` | Button size |
+| `colorPalette` | `'gray' \| 'green' \| 'blue' \| 'red' \| 'orange' \| 'yellow'` | `'primary'` | Button color palette |
+| `disabled` | `boolean` | `false` | Whether the button is disabled |
+| `loading` | `boolean` | `false` | Whether the button is in loading state |
+| `loadingText` | `string` | - | Text to display during loading |
+| `spinnerPlacement` | `'start' \| 'end'` | `'start'` | Spinner position during loading |
+
+## Accessibility
+
+The Button inherits all accessibility features from Chakra UI Button:
+
+- Full keyboard navigation support
+- Appropriate ARIA attributes
+- Focusable and navigable states
+- Screen reader support
+
+## Best Practices
+
+### ✅ Do
+
+- Use semantic variants (e.g., `variant="solid"` for primary actions)
+- Provide `loadingText` when using loading state
+- Use consistent sizes in similar contexts
+- Combine icons with text for better clarity
+
+### ❌ Don't
+
+- Don't use too many different variants in the same context
+- Avoid buttons that are too small for touch interfaces
+- Don't omit text in buttons with important actions
+- Avoid using colors that don't contrast adequately
+
+## Advanced Examples
+
+### Form Button
+
+```tsx
+import { Button } from '@bako/ui';
+import { useState } from 'react';
+
+function FormButtonExample() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    // Simulate async operation
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setIsLoading(false);
+  };
+
+  return (
+    <Button 
+      type="submit" 
+      loading={isLoading}
+      loadingText="Saving..."
+      onClick={handleSubmit}
+    >
+      Save
+    </Button>
+  );
+}
+```
+
+### Button Group
+
+```tsx
+import { Button } from '@bako/ui';
+import { HStack } from '@chakra-ui/react';
+
+function ButtonGroupExample() {
+  return (
+    <HStack gap={2}>
+      <Button variant="outline">Cancel</Button>
+      <Button variant="solid">Confirm</Button>
+    </HStack>
+  );
+}
+```
