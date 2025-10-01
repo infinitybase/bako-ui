@@ -1,9 +1,16 @@
-import { dirname, join, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const rootDir = resolve(__dirname, '../../..');
+const fromRoot = (relativePath: string) => {
+  const url = new URL(relativePath, import.meta.url);
+  const pathname = decodeURIComponent(url.pathname);
+
+  if (process.platform === 'win32') {
+    const normalized = pathname.startsWith('/') ? pathname.slice(1) : pathname;
+    return normalized.split('/').join('\\');
+  }
+
+  return pathname;
+};
 
 const config: StorybookConfig = {
   stories: ['../stories/*.mdx', '../stories/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -13,7 +20,7 @@ const config: StorybookConfig = {
     '@storybook/addon-docs',
     '@storybook/addon-essentials',
   ],
-  staticDirs: [join(rootDir, 'packages/ui/public')],
+  staticDirs: [fromRoot('../../../packages/ui/public/')],
   framework: {
     name: '@storybook/react-vite',
     options: {},
@@ -22,7 +29,7 @@ const config: StorybookConfig = {
     config.resolve = config.resolve ?? {};
     config.resolve.alias = {
       ...(config.resolve.alias ?? {}),
-      '@bako/ui': join(rootDir, 'packages/ui/src'),
+      '@bako/ui': fromRoot('../../../packages/ui/src/'),
     };
     return config;
   },
