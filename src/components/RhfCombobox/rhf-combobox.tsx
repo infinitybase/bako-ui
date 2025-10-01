@@ -1,7 +1,10 @@
 import {
+  Badge,
   Combobox,
   Field,
+  Flex,
   HStack,
+  Image,
   Portal,
   Span,
   Spinner,
@@ -9,11 +12,13 @@ import {
   useFilter,
   useListCollection,
 } from '@chakra-ui/react';
+import { useMemo } from 'react';
 import {
   type FieldPath,
   type FieldValues,
   useController,
 } from 'react-hook-form';
+import { floatingStyles } from '../../helpers/floating-styles';
 import type { RhfComboboxProps } from './rhf-combobox.types';
 
 export function RhfCombobox<
@@ -31,6 +36,7 @@ export function RhfCombobox<
   multiple = false,
   isLoadingOptions = false,
   noOptionsText = 'No items found',
+  openOnFocus = true,
   slotProps,
 }: RhfComboboxProps<TFieldValues, TName>) {
   const {
@@ -56,27 +62,55 @@ export function RhfCombobox<
     disabled,
     invalid: !!error,
     multiple,
+    openOnClick: openOnFocus,
     ...slotProps?.root,
   });
 
+  const hasValue = useMemo(
+    () =>
+      (Array.isArray(value) ? false : !!value) ||
+      combobox.inputValue.length > 0,
+    [value, combobox.inputValue]
+  );
+
+  const activeFloating = hasValue || combobox.open;
+
   return (
     <Field.Root invalid={!!error}>
-      <Field.Label color="bg.emphasized" {...slotProps?.label}>
+      <Field.Label
+        color="bg.emphasized"
+        htmlFor={rest.name}
+        {...slotProps?.label}
+        css={floatingStyles({ hasValue: activeFloating, withStartIcon: false })}
+      >
         {label}
       </Field.Label>
-      <Combobox.RootProvider value={combobox} width="320px">
+      <Combobox.RootProvider
+        value={combobox}
+        width="320px"
+        size={slotProps?.root?.size}
+      >
         <Combobox.Control>
           <Combobox.Input
             color="fg.inverted"
             ref={ref}
             {...rest}
+            pt={2}
+            px={3}
             placeholder=""
           />
           <Combobox.IndicatorGroup>
-            <Combobox.ClearTrigger />
+            <Combobox.ClearTrigger color="unset" />
             <Combobox.Trigger />
           </Combobox.IndicatorGroup>
         </Combobox.Control>
+        {multiple && (
+          <Flex gap={2} flexWrap="wrap" position="absolute" bottom={-7}>
+            {(value as string[]).map((item) => (
+              <Badge key={item}>{item}</Badge>
+            ))}
+          </Flex>
+        )}
         {helperText && <Field.HelperText>{helperText}</Field.HelperText>}
         {error && <Field.ErrorText>{error.message}</Field.ErrorText>}
         <Portal>
@@ -92,7 +126,17 @@ export function RhfCombobox<
               {!isLoadingOptions &&
                 collection.items.map((item) => (
                   <Combobox.Item item={item} key={item.value}>
-                    {item.label}
+                    {!item.imageUrl && item.label}
+                    {item.imageUrl && (
+                      <Flex gap={2} align="center">
+                        <Image
+                          src={item.imageUrl}
+                          boxSize="5"
+                          alt={`${item.label} image`}
+                        />
+                        <Span>{item.label}</Span>
+                      </Flex>
+                    )}
                     <Combobox.ItemIndicator />
                   </Combobox.Item>
                 ))}

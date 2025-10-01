@@ -26,6 +26,11 @@ const config = defineConfig({
       input: inputRecipe,
     },
   },
+  globalCss: {
+    body: {
+      color: 'textPrimary',
+    },
+  },
 });
 
 const theme = createSystem(defaultConfig, config);

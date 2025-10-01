@@ -32,7 +32,8 @@ const variantOptions = [
   'outline',
   'ghost',
   'plain',
-  'shaded',
+  // 'subtle', TODO: check why it doesn't look good
+  // 'surface', TODO: check why it doesn't look good
 ] as const;
 const colorPaletteOptions = [
   'gray',

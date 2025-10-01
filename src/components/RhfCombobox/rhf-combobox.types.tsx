@@ -7,20 +7,25 @@ import type {
 } from 'react-hook-form';
 import type { EnumOption } from '../../types/common';
 
+type RhfComboboxOptions =
+  | (EnumOption & { imageUrl?: never })
+  | (EnumOption & { imageUrl: string });
+
 export type RhfComboboxProps<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>,
 > = UseControllerProps<TFieldValues, TName> & {
   label: string;
-  options: EnumOption[];
+  options: RhfComboboxOptions[];
   helperText?: string;
   disabled?: boolean;
   error?: FieldError;
   slotProps?: {
-    root?: ComboboxRootProps;
+    root?: Omit<ComboboxRootProps, 'collection' | 'openOnClick'>;
     label?: FieldLabelProps;
   };
   multiple?: boolean;
   noOptionsText?: string;
   isLoadingOptions?: boolean;
+  openOnFocus?: boolean;
 };

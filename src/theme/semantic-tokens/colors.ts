@@ -8,6 +8,9 @@ export const semanticColors = defineSemanticTokens.colors({
         _dark: '{colors.background}',
       },
     },
+    panel: {
+      value: { _light: '{colors.background}', _dark: '{colors.background}' },
+    },
   },
   red: {
     solid: {

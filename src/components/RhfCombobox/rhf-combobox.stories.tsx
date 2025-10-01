@@ -1,3 +1,4 @@
+import { Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useForm } from 'react-hook-form';
 import { RhfCombobox } from './rhf-combobox';
@@ -16,6 +17,8 @@ const meta: Meta<typeof RhfCombobox> = {
 export default meta;
 
 type Story = StoryObj<typeof RhfCombobox>;
+const colors = ['Blue', 'Red', 'Green', 'Yellow', 'Black'];
+const sizes = ['xs', 'sm', 'md', 'lg'] as const;
 
 export const Standard: Story = {
   render: (args) => {
@@ -28,10 +31,82 @@ export const Standard: Story = {
     name: 'name',
     defaultValue: '',
     label: 'Select an option',
+    options: colors.map((color) => ({
+      label: color,
+      value: color.toLowerCase(),
+    })),
+  },
+};
+
+export const Sizes: Story = {
+  render: (args) => {
+    const { control } = useForm();
+
+    return (
+      <Stack>
+        {sizes.map((size) => (
+          <RhfCombobox
+            key={size}
+            slotProps={{ root: { size } }}
+            control={control}
+            {...args}
+          />
+        ))}
+      </Stack>
+    );
+  },
+  args: {
+    disabled: false,
+    name: 'name',
+    defaultValue: '',
+    label: 'Select an option',
+    options: colors.map((color) => ({
+      label: color,
+      value: color.toLowerCase(),
+    })),
+  },
+};
+
+export const Multiple: Story = {
+  render: (args) => {
+    const { control } = useForm();
+
+    return <RhfCombobox control={control} {...args} multiple />;
+  },
+  args: {
+    disabled: false,
+    name: 'name',
+    defaultValue: [],
+    label: 'Select options',
+    options: colors.map((color) => ({
+      label: color,
+      value: color.toLowerCase(),
+    })),
+  },
+};
+
+export const OptionsWithImage: Story = {
+  render: (args) => {
+    const { control } = useForm();
+
+    return <RhfCombobox control={control} {...args} />;
+  },
+  args: {
+    disabled: false,
+    name: 'name',
+    defaultValue: '',
+    label: 'Select an option',
     options: [
-      { label: 'Option 1', value: 'option1' },
-      { label: 'Option 2', value: 'option2' },
-      { label: 'Option 3', value: 'option3' },
+      {
+        label: 'Donuts',
+        value: 'donuts',
+        imageUrl: '/donuts.png',
+      },
+      {
+        label: 'Ice Cream',
+        value: 'ice-cream',
+        imageUrl: '/ice-cream.png',
+      },
     ],
   },
 };

@@ -1,6 +1,6 @@
 {
   "name": "@bako/ui",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Bako Design System - A modern React component library built with Chakra UI",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -40,6 +40,7 @@
   "dependencies": {
     "@chakra-ui/react": "^3.21.0",
     "@emotion/react": "^11.14.0",
+    "@storybook/addon-themes": "^9.1.10",
     "react-hook-form": "^7.58.1"
   },
   "devDependencies": {

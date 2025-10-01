@@ -62,7 +62,14 @@ describe('Button', () => {
   });
 
   it('renders with different variants', () => {
-    const variants = ['solid', 'outline', 'ghost', 'plain', 'shaded'] as const;
+    const variants = [
+      'solid',
+      'outline',
+      'ghost',
+      'plain',
+      'subtle',
+      'surface',
+    ] as const;
 
     variants.forEach((variant) => {
       const { unmount } = renderWithChakra(
