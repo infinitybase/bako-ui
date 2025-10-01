@@ -1,4 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react';
+import type { RenderResult } from '@testing-library/react';
 import { render } from '@testing-library/react';
 import type React from 'react';
 import theme from '../theme';
@@ -8,7 +9,7 @@ const ChakraWrapper = ({ children }: { children: React.ReactNode }) => (
   <ChakraProvider value={theme}>{children}</ChakraProvider>
 );
 
-const renderWithChakra = (ui: React.ReactElement) => {
+const renderWithChakra = (ui: React.ReactElement): RenderResult => {
   return render(ui, { wrapper: ChakraWrapper });
 };
 

@@ -1,6 +1,8 @@
+import type { IconProps } from '@chakra-ui/react';
 import { createIcon } from '@chakra-ui/react';
+import type { FC } from 'react';
 
-export const WalletIcon = createIcon({
+export const WalletIcon: FC<IconProps> = createIcon({
   displayName: 'WalletIcon',
   viewBox: '0 0 21 18',
   path: (

@@ -1,4 +1,4 @@
-import { defineStyle } from "@chakra-ui/react";
+import { defineStyle } from '@chakra-ui/react';
 
 export const floatingStyles = ({
   hasValue,
@@ -24,7 +24,6 @@ export const floatingStyles = ({
     _peerFocusVisible: {
       top: '0',
       transform: 'none',
-
       insetStart: withStartIcon ? '9' : '2.5',
       fontSize: '2xs',
     },

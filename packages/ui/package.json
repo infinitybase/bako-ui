@@ -1,0 +1,83 @@
+{
+  "name": "@bako/ui",
+  "version": "0.0.1",
+  "description": "Bako Design System - A modern React component library built with Chakra UI",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "lint": "biome check",
+    "typegen": "pnpm exec @chakra-ui/cli typegen ./src/theme/index.ts",
+    "clean": "rimraf dist",
+    "prepublishOnly": "pnpm run build",
+    "chromatic": "pnpm exec chromatic --project-token=chpt_b05b4a7bf8aabfe"
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "design-system",
+    "chakra-ui",
+    "typescript",
+    "bako-safe",
+    "bako-id"
+  ],
+  "author": "",
+  "license": "ISC",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.umd.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@chakra-ui/react": "^3.21.0",
+    "@emotion/react": "^11.14.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "react-hook-form": "^7.58.1"
+  },
+  "devDependencies": {
+    "@chakra-ui/cli": "^3.1.0",
+    "@chromatic-com/storybook": "^4.0.0",
+    "@storybook/addon-a11y": "^9.0.14",
+    "@storybook/addon-docs": "^9.0.14",
+    "@storybook/addon-essentials": "^9.0.0-alpha.12",
+    "@storybook/addon-themes": "^9.1.10",
+    "@storybook/blocks": "^9.0.0-alpha.17",
+    "@storybook/react-vite": "^9.0.12",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@vitejs/plugin-react": "^4.5.2",
+    "@vitest/ui": "^3.2.4",
+    "chromatic": "^13.0.1",
+    "jsdom": "^26.1.0",
+    "prop-types": "^15.8.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "rimraf": "^6.0.1",
+    "storybook": "^9.0.12",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^3.2.4"
+  }
+}

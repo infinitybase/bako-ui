@@ -1,9 +1,4 @@
-import {
-  Box,
-  Input as ChakraInput,
-  Field,
-  InputGroup
-} from '@chakra-ui/react';
+import { Box, Input as ChakraInput, Field, InputGroup } from '@chakra-ui/react';
 import { useMemo } from 'react';
 import {
   type FieldPath,
