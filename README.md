@@ -26,6 +26,9 @@ All workspace tasks proxy to the package scripts through Turborepo:
 | `pnpm storybook` | Launch Storybook from `apps/docs` against `@bako/ui`. |
 | `pnpm typegen` | Generate Chakra theme typings. |
 | `pnpm clean` | Clean build artifacts across the repo. |
+| `pnpm changeset` | Start an interactive prompt to record version notes for affected packages. |
+| `pnpm version-packages` | Apply pending changesets to package versions and changelogs. |
+| `pnpm release` | Publish all packages with unreleased changesets to npm. |
 
 To run a script for a single package, use the `--filter` flag:
 
@@ -45,18 +48,16 @@ pnpm build --filter @bako/ui
   - `.storybook/`: Storybook configuration pointing at the UI package
   - `package.json`: Storybook scripts and Chromatic integration
 
-## Publishing `@bako/ui`
+## Release workflow with Changesets
 
-1. Ensure the package version is bumped in `packages/ui/package.json` (`pnpm version [patch|minor|major] --filter @bako/ui`).
-2. Build the package: `pnpm build --filter @bako/ui`
-3. (Optional) Inspect the package tarball: `pnpm pack --filter @bako/ui`
-4. Publish to npm (requires access to the `@bako` scope):
+This repository uses [Changesets](https://github.com/changesets/changesets) to coordinate versioning and releases for every workspace package.
 
-```bash
-pnpm publish --filter @bako/ui --access public
-```
+1. While implementing a change, run `pnpm changeset` and choose the affected packages and semver bump. The command creates a markdown summary in `.changeset/` that should be committed alongside your code.
+2. When you're ready to cut a release, run `pnpm version-packages` on the default branch. This updates versions, generates changelog entries, and removes applied changeset files.
+3. Commit the resulting version bumps and changelog updates (often via a release PR).
+4. Publish the new versions with `pnpm release`. Ensure your npm authentication is configured (including OTP if required) before running the command.
 
-If your npm account uses 2FA, supply `--otp=<code>` during publish.
+You can still target a single package by combining these commands with `--filter` if necessary (for example, `pnpm build --filter @bako/ui`).
 
 ## Continuous integration
 
