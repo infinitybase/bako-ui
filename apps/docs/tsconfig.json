@@ -1,0 +1,11 @@
+{
+  "extends": "@bako/ts-config/react-app",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@bako/ui": ["../../packages/ui/src"]
+    },
+    "types": ["node", "vite/client"]
+  },
+  "include": [".storybook/**/*"]
+}

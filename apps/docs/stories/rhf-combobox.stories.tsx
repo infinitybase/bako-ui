@@ -1,7 +1,7 @@
+import { RhfCombobox } from '@bako/ui';
 import { Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useForm } from 'react-hook-form';
-import { RhfCombobox } from './rhf-combobox';
 
 const meta: Meta<typeof RhfCombobox> = {
   component: RhfCombobox,

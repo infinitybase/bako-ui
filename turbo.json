@@ -1,29 +1,30 @@
 {
-	"$schema": "https://turbo.build/schema.json",
-	"tasks": {
-		"build": {
-			"dependsOn": ["^build"],
-			"outputs": ["dist/**", "storybook-static/**", "build/**"]
-		},
-		"lint": {
-			"outputs": []
-		},
-		"test": {
-			"dependsOn": ["build"]
-		},
-		"storybook": {
-			"dependsOn": ["build"],
-			"cache": false
-		},
-		"typegen": {
-			"dependsOn": ["build"],
-			"outputs": ["src/theme/**/*.d.ts"]
-		},
-		"clean": {
-			"cache": false
-		},
-		"dev": {
-			"cache": false
-		}
-	}
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "storybook-static/**", "build/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "test": {
+      "dependsOn": ["build"]
+    },
+    "storybook": {
+      "dependsOn": ["build"],
+      "cache": false
+    },
+    "typegen": {
+      "dependsOn": ["build"],
+      "outputs": ["src/theme/**/*.d.ts"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
 }

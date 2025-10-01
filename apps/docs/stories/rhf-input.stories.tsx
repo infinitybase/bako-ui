@@ -1,8 +1,8 @@
 import { Icon, Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useForm } from 'react-hook-form';
-import { WalletIcon } from '../../icons';
-import { RhfInput } from './rhf-input';
+import { RhfInput } from '../../../packages/ui/src/components/RhfInput/rhf-input';
+import { WalletIcon } from '../../../packages/ui/src/icons';
 
 const meta: Meta<typeof RhfInput> = {
   component: RhfInput,

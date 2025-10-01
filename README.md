@@ -23,7 +23,7 @@ All workspace tasks proxy to the package scripts through Turborepo:
 | `pnpm build` | Build every package (`@bako/ui` compiles library bundles). |
 | `pnpm test` | Execute unit tests in each package (Vitest in `@bako/ui`). |
 | `pnpm lint` | Run Biome lint/format checks. |
-| `pnpm storybook` | Launch Storybook for `@bako/ui`. |
+| `pnpm storybook` | Launch Storybook from `apps/docs` against `@bako/ui`. |
 | `pnpm typegen` | Generate Chakra theme typings. |
 | `pnpm clean` | Clean build artifacts across the repo. |
 
@@ -33,14 +33,17 @@ To run a script for a single package, use the `--filter` flag:
 pnpm build --filter @bako/ui
 ```
 
-## Package structure
+## Workspace layout
 
 - `packages/ui`: Bako design system (React + Chakra UI)
-  - `src/`: Component source code
-  - `storybook/`: Storybook stories and configuration
-  - `vite.config.ts`: Library build output (ES + UMD)
+  - `src/`: Component source code and stories
+  - `tsup.config.ts`: Library bundler configuration (ESM + CJS)
   - `vitest.config.ts`: Vitest runner configuration
   - `package.json`: Library-specific scripts and dependencies
+- `packages/ts-config`: Shared TypeScript configuration presets used across the repo
+- `apps/docs`: Storybook application that consumes `@bako/ui`
+  - `.storybook/`: Storybook configuration pointing at the UI package
+  - `package.json`: Storybook scripts and Chromatic integration
 
 ## Publishing `@bako/ui`
 

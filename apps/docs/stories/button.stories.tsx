@@ -1,7 +1,6 @@
+import { Button, WalletIcon } from '@bako/ui';
 import { HStack, Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { WalletIcon } from '../../icons';
-import Button from './button';
 
 const meta: Meta<typeof Button> = {
   component: Button,

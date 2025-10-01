@@ -192,7 +192,7 @@ The `slotProps` prop allows customization of internal components:
 # Install dependencies
 pnpm install
 
-# Start Storybook
+# Start Storybook (docs app)
 pnpm storybook
 
 # Run tests
@@ -212,8 +212,10 @@ pnpm lint
 
 ### Storybook
 
+Storybook now lives in `apps/docs`.
+
 - `pnpm storybook` - Starts Storybook in development mode
-- `pnpm build-storybook` - Builds Storybook for production
+- `pnpm build --filter @bako/docs` - Builds the static Storybook bundle
 
 ## Test Configuration
 
