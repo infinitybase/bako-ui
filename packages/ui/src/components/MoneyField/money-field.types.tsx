@@ -9,7 +9,8 @@ export interface MoneyFieldProps
    * @default ','
    */
   thousandSeparator?: string;
-  /** The character to use as a decimal separator
+  /**
+   * The character to use as a decimal separator
    * @default '.'
    */
   decimalSeparator?: string;
