@@ -41,7 +41,6 @@ const FormExample = ({
       }}
     >
       {children(control)}
-      <button type="submit">Submit</button>
     </form>
   );
 };
