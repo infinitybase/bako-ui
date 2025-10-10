@@ -14,7 +14,8 @@ export interface MoneyFieldProps
    * @default '.'
    */
   decimalSeparator?: string;
-  /** The number of decimal places to allow
+  /**
+   * The number of decimal places to allow
    * @default 2
    */
   decimalScale?: number;
