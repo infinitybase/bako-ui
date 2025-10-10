@@ -71,7 +71,7 @@ export function RhfMoneyField<
               hasValue,
               withStartIcon: !!slotProps?.inputGroup?.startElement,
             })}
-            htmlFor={name}
+            htmlFor={rest.name}
             {...slotProps?.label}
           >
             {label}
