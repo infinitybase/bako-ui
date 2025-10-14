@@ -1,2 +1,2 @@
-export { Steps } from './steps';
+export * from './steps';
 export type * from './steps.types';

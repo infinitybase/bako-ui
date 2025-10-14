@@ -1,2 +1,2 @@
-export { default as Input } from './input';
-export type { InputProps } from './input.types';
+export { default as Input, Field, InputGroup } from './input';
+export * from './input.types';

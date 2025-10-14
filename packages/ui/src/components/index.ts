@@ -55,4 +55,13 @@ export * from './Tabs';
 export * from './Menu';
 
 // Re-export utilities from Chakra UI
-export { Portal, createListCollection } from '@chakra-ui/react';
+export {
+  Portal,
+  createListCollection,
+  Alert,
+  ButtonGroup,
+  Span,
+  ClientOnly,
+} from '@chakra-ui/react';
+
+export type { SpanProps, ClientOnlyProps } from '@chakra-ui/react';

@@ -1,3 +1,5 @@
-import { Flex as ChakraFlex } from '@chakra-ui/react';
+import { Flex as ChakraFlex, Spacer, Center } from '@chakra-ui/react';
 
 export default ChakraFlex;
+
+export { Spacer, Center };

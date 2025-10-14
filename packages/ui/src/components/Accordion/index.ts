@@ -1,2 +1,2 @@
-export { Accordion } from './accordion';
+export * from './accordion';
 export type * from './accordion.types';

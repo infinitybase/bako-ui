@@ -1,1 +1,1 @@
-export type { FlexProps } from '@chakra-ui/react';
+export type { CenterProps, FlexProps, SpacerProps } from '@chakra-ui/react';

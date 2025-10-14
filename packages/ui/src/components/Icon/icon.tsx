@@ -1,3 +1,1 @@
-import { Icon as ChakraIcon } from '@chakra-ui/react';
-
-export default ChakraIcon;
+export { createIcon, Icon as ChakraIcon } from '@chakra-ui/react';

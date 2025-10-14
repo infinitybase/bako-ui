@@ -38,6 +38,9 @@ export function RhfCombobox<
   noOptionsText = 'No items found',
   openOnFocus = true,
   slotProps,
+  variant,
+  clearTriggerIcon,
+  showTrigger = false,
 }: RhfComboboxProps<TFieldValues, TName>) {
   const {
     field: { value, onChange, ref, ...rest },
@@ -55,7 +58,11 @@ export function RhfCombobox<
     },
     onValueChange(selected) {
       if (selected) {
-        onChange(selected.value);
+        if (multiple) {
+          onChange(selected.value);
+        } else {
+          onChange(selected.value[0]);
+        }
       }
     },
     value: [...(value || [])],
@@ -75,33 +82,47 @@ export function RhfCombobox<
 
   const activeFloating = hasValue || combobox.open;
 
+  const inputProps = label
+    ? {
+        pt: 2,
+        px: 3,
+        placeholder: '',
+      }
+    : {};
+
   return (
     <Field.Root invalid={!!error}>
-      <Field.Label
-        color="bg.emphasized"
-        htmlFor={rest.name}
-        {...slotProps?.label}
-        css={floatingStyles({ hasValue: activeFloating, withStartIcon: false })}
-      >
-        {label}
-      </Field.Label>
+      {label && (
+        <Field.Label
+          color="bg.emphasized"
+          htmlFor={rest.name}
+          {...slotProps?.label}
+          css={floatingStyles({
+            hasValue: activeFloating,
+            withStartIcon: false,
+          })}
+        >
+          {label}
+        </Field.Label>
+      )}
       <Combobox.RootProvider
         value={combobox}
-        width="320px"
+        width="full"
         size={slotProps?.root?.size}
+        variant={variant}
+        borderRadius="lg"
       >
         <Combobox.Control>
-          <Combobox.Input
-            color="fg.inverted"
-            ref={ref}
-            {...rest}
-            pt={2}
-            px={3}
-            placeholder=""
-          />
+          <Combobox.Input color="fg" ref={ref} {...inputProps} {...rest} />
           <Combobox.IndicatorGroup>
-            <Combobox.ClearTrigger color="unset" />
-            <Combobox.Trigger />
+            {clearTriggerIcon ? (
+              <Combobox.ClearTrigger color="unset" asChild>
+                {clearTriggerIcon}
+              </Combobox.ClearTrigger>
+            ) : (
+              <Combobox.ClearTrigger color="unset" />
+            )}
+            {showTrigger && <Combobox.Trigger />}
           </Combobox.IndicatorGroup>
         </Combobox.Control>
         {multiple && (

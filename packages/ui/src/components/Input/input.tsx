@@ -1,6 +1,11 @@
-import { Input as ChakraInput } from '@chakra-ui/react';
+import { Input as ChakraInput, Field, InputGroup } from '@chakra-ui/react';
+import { forwardRef } from 'react';
 import type { InputProps } from './input.types';
 
-export default function Input(props: InputProps) {
-  return <ChakraInput {...props} />;
-}
+export default forwardRef<HTMLInputElement, InputProps>(
+  function Input(props, ref) {
+    return <ChakraInput ref={ref} {...props} />;
+  }
+);
+
+export { Field, InputGroup };

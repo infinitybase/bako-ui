@@ -21,7 +21,7 @@ const config = defineConfig({
   globalCss: {
     body: {
       color: 'textPrimary',
-      bg: 'bg',
+      bg: 'background',
       minH: '100vh',
     },
   },

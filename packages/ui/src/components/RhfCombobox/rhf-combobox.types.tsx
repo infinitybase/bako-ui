@@ -15,7 +15,7 @@ export type RhfComboboxProps<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>,
 > = UseControllerProps<TFieldValues, TName> & {
-  label: string;
+  label?: string;
   options: RhfComboboxOptions[];
   helperText?: string;
   disabled?: boolean;
@@ -28,4 +28,7 @@ export type RhfComboboxProps<
   noOptionsText?: string;
   isLoadingOptions?: boolean;
   openOnFocus?: boolean;
+  variant?: ComboboxRootProps['variant'];
+  showTrigger?: boolean;
+  clearTriggerIcon?: React.ReactNode;
 };

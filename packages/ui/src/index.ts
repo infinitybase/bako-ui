@@ -2,6 +2,8 @@
 export * from './components';
 // Helpers
 export * from './helpers/format-number';
+// Hooks
+export * from './hooks';
 // Icons
 export * from './icons';
 // Providers
