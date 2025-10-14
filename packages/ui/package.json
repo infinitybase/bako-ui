@@ -1,10 +1,13 @@
 {
-  "name": "@bako/ui",
+  "name": "bako-ui",
   "version": "0.2.0",
   "description": "Bako Design System - A modern React component library built with Chakra UI",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "repository": {
+    "url": "git+https://github.com/infinitybase/bako-ui.git"
+  },
   "files": [
     "dist"
   ],
@@ -30,7 +33,7 @@
     "bako-id"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -48,7 +51,7 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "react-hook-form": "^7.58.1",
+    "react-hook-form": "^7.65.0",
     "use-mask-input": "^3.5.2"
   },
   "devDependencies": {

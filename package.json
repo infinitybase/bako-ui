@@ -1,6 +1,10 @@
 {
-  "name": "bako-ui",
-  "private": true,
+  "name": "bako-ui-repo",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infinitybase/bako-ui.git"
+  },
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
@@ -11,7 +15,7 @@
     "clean": "turbo run clean --parallel",
     "changeset": "pnpm exec changeset",
     "version-packages": "pnpm exec changeset version",
-    "release": "pnpm exec changeset publish"
+    "release": "pnpm exec changeset publish --filter @bako/ui"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
