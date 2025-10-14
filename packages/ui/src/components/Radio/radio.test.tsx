@@ -16,7 +16,7 @@ describe('RadioGroup and Radio', () => {
         <Radio value="2">Option 2</Radio>
       </RadioGroup>
     );
-    
+
     expect(screen.getByText('Option 1')).toBeInTheDocument();
     expect(screen.getByText('Option 2')).toBeInTheDocument();
   });
@@ -29,17 +29,17 @@ describe('RadioGroup and Radio', () => {
         <Radio value="2">Option 2</Radio>
       </RadioGroup>
     );
-    
+
     const radio1 = screen.getByRole('radio', { name: 'Option 1' });
     const radio2 = screen.getByRole('radio', { name: 'Option 2' });
-    
+
     expect(radio1).not.toBeChecked();
     expect(radio2).not.toBeChecked();
-    
+
     await user.click(radio1);
     expect(radio1).toBeChecked();
     expect(radio2).not.toBeChecked();
-    
+
     await user.click(radio2);
     expect(radio1).not.toBeChecked();
     expect(radio2).toBeChecked();
@@ -52,10 +52,10 @@ describe('RadioGroup and Radio', () => {
         <Radio value="2">Option 2</Radio>
       </RadioGroup>
     );
-    
+
     const radio1 = screen.getByRole('radio', { name: 'Option 1' });
     const radio2 = screen.getByRole('radio', { name: 'Option 2' });
-    
+
     expect(radio1).not.toBeChecked();
     expect(radio2).toBeChecked();
   });
@@ -67,10 +67,10 @@ describe('RadioGroup and Radio', () => {
         <Radio value="2">Option 2</Radio>
       </RadioGroup>
     );
-    
+
     const radio1 = screen.getByRole('radio', { name: 'Option 1' });
     const radio2 = screen.getByRole('radio', { name: 'Option 2' });
-    
+
     expect(radio1).toBeDisabled();
     expect(radio2).toBeDisabled();
   });
@@ -78,14 +78,16 @@ describe('RadioGroup and Radio', () => {
   it('individual radio can be disabled', () => {
     renderWithChakra(
       <RadioGroup>
-        <Radio value="1" disabled>Option 1</Radio>
+        <Radio value="1" disabled>
+          Option 1
+        </Radio>
         <Radio value="2">Option 2</Radio>
       </RadioGroup>
     );
-    
+
     const radio1 = screen.getByRole('radio', { name: 'Option 1' });
     const radio2 = screen.getByRole('radio', { name: 'Option 2' });
-    
+
     expect(radio1).toBeDisabled();
     expect(radio2).not.toBeDisabled();
   });
@@ -93,17 +95,17 @@ describe('RadioGroup and Radio', () => {
   it('calls onValueChange when selection changes', async () => {
     const handleChange = vi.fn();
     const user = userEvent.setup();
-    
+
     renderWithChakra(
       <RadioGroup onValueChange={handleChange}>
         <Radio value="1">Option 1</Radio>
         <Radio value="2">Option 2</Radio>
       </RadioGroup>
     );
-    
+
     const radio1 = screen.getByRole('radio', { name: 'Option 1' });
     await user.click(radio1);
-    
+
     expect(handleChange).toHaveBeenCalled();
   });
 
@@ -114,10 +116,10 @@ describe('RadioGroup and Radio', () => {
         <Radio value="2">Horizontal 2</Radio>
       </RadioGroup>
     );
-    
+
     expect(screen.getByText('Horizontal 1')).toBeInTheDocument();
     expect(screen.getByText('Horizontal 2')).toBeInTheDocument();
-    
+
     rerender(
       <ChakraWrapper>
         <RadioGroup orientation="vertical">
@@ -126,7 +128,7 @@ describe('RadioGroup and Radio', () => {
         </RadioGroup>
       </ChakraWrapper>
     );
-    
+
     expect(screen.getByText('Vertical 1')).toBeInTheDocument();
     expect(screen.getByText('Vertical 2')).toBeInTheDocument();
   });
@@ -137,9 +139,9 @@ describe('RadioGroup and Radio', () => {
         <Radio value="1">Small</Radio>
       </RadioGroup>
     );
-    
+
     expect(screen.getByText('Small')).toBeInTheDocument();
-    
+
     rerender(
       <ChakraWrapper>
         <RadioGroup size="md">
@@ -147,9 +149,9 @@ describe('RadioGroup and Radio', () => {
         </RadioGroup>
       </ChakraWrapper>
     );
-    
+
     expect(screen.getByText('Medium')).toBeInTheDocument();
-    
+
     rerender(
       <ChakraWrapper>
         <RadioGroup size="lg">
@@ -157,7 +159,7 @@ describe('RadioGroup and Radio', () => {
         </RadioGroup>
       </ChakraWrapper>
     );
-    
+
     expect(screen.getByText('Large')).toBeInTheDocument();
   });
 
@@ -167,7 +169,7 @@ describe('RadioGroup and Radio', () => {
         <Radio value="1" aria-label="No label radio" />
       </RadioGroup>
     );
-    
+
     const radio = screen.getByRole('radio', { name: 'No label radio' });
     expect(radio).toBeInTheDocument();
   });

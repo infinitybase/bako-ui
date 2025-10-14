@@ -23,7 +23,11 @@ describe('Skeleton', () => {
 
   it('supports borderRadius', () => {
     renderWithChakra(
-      <Skeleton data-testid="rounded-skeleton" height="20px" borderRadius="md" />
+      <Skeleton
+        data-testid="rounded-skeleton"
+        height="20px"
+        borderRadius="md"
+      />
     );
     expect(screen.getByTestId('rounded-skeleton')).toBeInTheDocument();
   });
@@ -31,12 +35,16 @@ describe('Skeleton', () => {
 
 describe('SkeletonCircle', () => {
   it('renders skeleton circle', () => {
-    renderWithChakra(<SkeletonCircle data-testid="skeleton-circle" size="50px" />);
+    renderWithChakra(
+      <SkeletonCircle data-testid="skeleton-circle" size="50px" />
+    );
     expect(screen.getByTestId('skeleton-circle')).toBeInTheDocument();
   });
 
   it('applies size prop', () => {
-    renderWithChakra(<SkeletonCircle data-testid="large-circle" size="100px" />);
+    renderWithChakra(
+      <SkeletonCircle data-testid="large-circle" size="100px" />
+    );
     expect(screen.getByTestId('large-circle')).toBeInTheDocument();
   });
 });

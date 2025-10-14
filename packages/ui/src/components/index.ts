@@ -1,4 +1,4 @@
-/** biome-ignore-all assist/source/organizeImports: <explanation> */
+/** biome-ignore-all assist/source/organizeImports: ignore */
 // Layout Primitives
 export * from './Stack';
 export * from './Flex';

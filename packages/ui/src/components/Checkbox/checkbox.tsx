@@ -5,7 +5,7 @@ import type { CheckboxProps } from './checkbox.types';
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(props, ref) {
     const { icon, children, inputProps, rootRef, ...rest } = props;
-    
+
     return (
       <ChakraCheckbox.Root ref={rootRef} {...rest}>
         <ChakraCheckbox.HiddenInput ref={ref} {...inputProps} />
@@ -17,7 +17,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         )}
       </ChakraCheckbox.Root>
     );
-  },
+  }
 );
 
 export default Checkbox;

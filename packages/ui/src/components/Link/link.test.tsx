@@ -58,7 +58,11 @@ describe('Link', () => {
 
   it('supports external links', () => {
     renderWithChakra(
-      <Link href="https://example.com" target="_blank" rel="noopener noreferrer">
+      <Link
+        href="https://example.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         External Link
       </Link>
     );
@@ -91,8 +95,16 @@ describe('Link', () => {
   });
 
   it('renders as a different element with asChild', () => {
-    const CustomLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-      <a href={href} data-custom="true">{children}</a>
+    const CustomLink = ({
+      href,
+      children,
+    }: {
+      href: string;
+      children: React.ReactNode;
+    }) => (
+      <a href={href} data-custom="true">
+        {children}
+      </a>
     );
 
     renderWithChakra(

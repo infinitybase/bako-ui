@@ -11,7 +11,9 @@ const renderWithChakra = (ui: React.ReactElement) => {
 describe('Heading', () => {
   it('renders heading text', () => {
     renderWithChakra(<Heading>Main Title</Heading>);
-    expect(screen.getByRole('heading', { name: 'Main Title' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Main Title' })
+    ).toBeInTheDocument();
   });
 
   it('supports different sizes', () => {

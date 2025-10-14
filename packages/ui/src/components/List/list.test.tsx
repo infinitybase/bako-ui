@@ -16,7 +16,7 @@ describe('List', () => {
         <List.Item>Item 3</List.Item>
       </List.Root>
     );
-    
+
     expect(screen.getByText('Item 1')).toBeInTheDocument();
     expect(screen.getByText('Item 2')).toBeInTheDocument();
     expect(screen.getByText('Item 3')).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe('List', () => {
         <List.Item>Third</List.Item>
       </List.Root>
     );
-    
+
     expect(screen.getByText('First')).toBeInTheDocument();
     expect(screen.getByText('Second')).toBeInTheDocument();
     expect(screen.getByText('Third')).toBeInTheDocument();
@@ -49,7 +49,7 @@ describe('List', () => {
         </List.Item>
       </List.Root>
     );
-    
+
     expect(screen.getByText('Parent 1')).toBeInTheDocument();
     expect(screen.getByText('Parent 2')).toBeInTheDocument();
     expect(screen.getByText('Child 1')).toBeInTheDocument();
@@ -65,7 +65,7 @@ describe('List', () => {
         </List.Item>
       </List.Root>
     );
-    
+
     expect(screen.getByText('✓')).toBeInTheDocument();
     expect(screen.getByText('Item with indicator')).toBeInTheDocument();
   });

@@ -20,7 +20,7 @@ describe('Tabs', () => {
         <Tabs.Content value="tab2">Content 2</Tabs.Content>
       </Tabs.Root>
     );
-    
+
     expect(screen.getByRole('tab', { name: 'Tab 1' })).toBeInTheDocument();
     expect(screen.getByRole('tab', { name: 'Tab 2' })).toBeInTheDocument();
     expect(screen.getByText('Content 1')).toBeInTheDocument();
@@ -38,12 +38,12 @@ describe('Tabs', () => {
         <Tabs.Content value="tab2">Content 2</Tabs.Content>
       </Tabs.Root>
     );
-    
+
     expect(screen.getByText('Content 1')).toBeVisible();
-    
+
     const tab2 = screen.getByRole('tab', { name: 'Tab 2' });
     await user.click(tab2);
-    
+
     expect(screen.getByText('Content 2')).toBeVisible();
   });
 
@@ -52,13 +52,15 @@ describe('Tabs', () => {
       <Tabs.Root defaultValue="tab1">
         <Tabs.List>
           <Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>
-          <Tabs.Trigger value="tab2" disabled>Tab 2</Tabs.Trigger>
+          <Tabs.Trigger value="tab2" disabled>
+            Tab 2
+          </Tabs.Trigger>
         </Tabs.List>
         <Tabs.Content value="tab1">Content 1</Tabs.Content>
         <Tabs.Content value="tab2">Content 2</Tabs.Content>
       </Tabs.Root>
     );
-    
+
     const tab2 = screen.getByRole('tab', { name: 'Tab 2' });
     expect(tab2).toBeDisabled();
   });
@@ -74,7 +76,7 @@ describe('Tabs', () => {
         <Tabs.Content value="tab2">Content 2</Tabs.Content>
       </Tabs.Root>
     );
-    
+
     expect(screen.getByRole('tab', { name: 'Tab 1' })).toBeInTheDocument();
     expect(screen.getByText('Content 1')).toBeInTheDocument();
   });

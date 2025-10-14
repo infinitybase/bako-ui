@@ -15,7 +15,9 @@ describe('Separator', () => {
   });
 
   it('renders vertical separator', () => {
-    renderWithChakra(<Separator data-testid="v-separator" orientation="vertical" />);
+    renderWithChakra(
+      <Separator data-testid="v-separator" orientation="vertical" />
+    );
     expect(screen.getByTestId('v-separator')).toBeInTheDocument();
   });
 

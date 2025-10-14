@@ -114,7 +114,10 @@ describe('Container', () => {
 
   it('renders with responsive maxW', () => {
     renderWithChakra(
-      <Container maxW={{ base: 'sm', md: 'md', lg: 'lg' }} data-testid="responsive-container">
+      <Container
+        maxW={{ base: 'sm', md: 'md', lg: 'lg' }}
+        data-testid="responsive-container"
+      >
         <p>Responsive width</p>
       </Container>
     );
