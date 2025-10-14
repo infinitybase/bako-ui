@@ -6,7 +6,10 @@
 		"types": ["vitest/globals"],
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"noFallthroughCasesInSwitch": true
+		"noFallthroughCasesInSwitch": true,
+		"paths": {
+			"@/*": ["./src/*"]
+		}
 	},
-	"include": ["src/**/*", "setup-test.ts", "src/components/Button", "../../apps/docs/stories/rhf-combobox.stories.tsx", "../../apps/docs/stories/rhf-input.stories.tsx"]
+	"include": ["src/**/*", "setup-test.ts"]
 }

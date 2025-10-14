@@ -6,7 +6,7 @@ import { WalletIcon } from '../../../packages/ui/src/icons';
 
 const meta: Meta<typeof RhfInput> = {
   component: RhfInput,
-  title: 'Bako UI/Form/RhfInput',
+  title: 'Bako UI/Rhf/RhfInput',
   tags: ['autodocs'],
   argTypes: {
     disabled: {

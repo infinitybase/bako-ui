@@ -1,19 +1,13 @@
 import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react';
-import { colors } from './colors';
-import { buttonRecipe } from './recipes/button';
-import { inputRecipe } from './recipes/input';
-import { semanticColors } from './semantic-tokens/colors';
-import { fonts } from './tokens/fonts';
+import { recipes } from './recipes';
+import { semanticTokens } from './semantic-tokens';
+import { slotRecipes } from './slot-recipes';
+import { tokens } from './tokens';
 
 const config = defineConfig({
   theme: {
-    tokens: {
-      colors,
-      fonts,
-    },
-    semanticTokens: {
-      colors: semanticColors,
-    },
+    tokens,
+    semanticTokens,
     breakpoints: {
       xs: '25em', // 400px
       sm: '48em', // 768px
@@ -21,14 +15,14 @@ const config = defineConfig({
       lg: '80em', // 1280px
       xl: '90em', // 1440px
     },
-    recipes: {
-      button: buttonRecipe,
-      input: inputRecipe,
-    },
+    recipes,
+    slotRecipes,
   },
   globalCss: {
     body: {
       color: 'textPrimary',
+      bg: 'bg',
+      minH: '100vh',
     },
   },
 });
