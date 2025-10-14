@@ -15,7 +15,7 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "lint": "biome check",
-    "typegen": "npx @chakra-ui/cli typegen ./src/theme/index.ts",
+    "typegen": "pnpm dlx @chakra-ui/cli typegen ./src/theme/index.ts",
     "clean": "rimraf dist",
     "prepublishOnly": "pnpm run build"
   },
