@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import { RhfMoneyField } from '../../../packages/ui/src/components/RhfMoneyField/rhf-money-field';
 
 const meta: Meta<typeof RhfMoneyField> = {
-  title: 'Bako UI/Form/RhfMoneyField',
+  title: 'Bako UI/Rhf/RhfMoneyField',
   component: RhfMoneyField,
   tags: ['autodocs'],
 };

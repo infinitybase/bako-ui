@@ -27,8 +27,6 @@ export default defineConfig({
         'coverage/',
       ],
     },
-    // Configuração para executar os testes em UI mode
-    ui: true,
     // Timeout para testes mais lentos
     testTimeout: 10000,
     // Configuração para watch mode

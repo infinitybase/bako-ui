@@ -1,5 +1,6 @@
 // Components
 export * from './components';
+
 // Icons
 export * from './icons';
 
@@ -11,3 +12,6 @@ export { default as theme } from './theme';
 
 // Types
 export * from './types';
+
+// Helpers
+export * from './helpers/format-number';

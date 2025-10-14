@@ -29,11 +29,11 @@ type Story = StoryObj<typeof Button>;
 const sizeOptions = ['xs', 'sm', 'md', 'lg'] as const;
 const variantOptions = [
   'solid',
+  'surface',
+  'subtle',
   'outline',
   'ghost',
   'plain',
-  // 'subtle', TODO: check why it doesn't look good
-  // 'surface', TODO: check why it doesn't look good
 ] as const;
 const colorPaletteOptions = [
   'gray',
@@ -62,12 +62,13 @@ export const Variants: Story = {
 export const Sizes: Story = {
   args: {
     variant: 'solid',
-    children: 'Button',
   },
   render: (args) => (
     <HStack gap={4}>
       {sizeOptions.map((size) => (
-        <Button key={size} {...args} size={size} />
+        <Button key={size} {...args} size={size}>
+          {size.toUpperCase()}
+        </Button>
       ))}
     </HStack>
   ),

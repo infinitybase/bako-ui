@@ -1,0 +1,15 @@
+export type {
+  DialogActionTriggerProps,
+  DialogBackdropProps,
+  DialogBodyProps,
+  DialogCloseTriggerProps,
+  DialogContentProps,
+  DialogDescriptionProps,
+  DialogFooterProps,
+  DialogHeaderProps,
+  DialogOpenChangeDetails,
+  DialogPositionerProps,
+  DialogRootProps,
+  DialogTitleProps,
+  DialogTriggerProps,
+} from '@chakra-ui/react';

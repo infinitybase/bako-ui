@@ -5,7 +5,10 @@
     "emitDeclarationOnly": true,
     "outDir": "dist",
     "types": ["node"],
-    "noEmit": false
+    "noEmit": false,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx", "__tests__", "dist"]

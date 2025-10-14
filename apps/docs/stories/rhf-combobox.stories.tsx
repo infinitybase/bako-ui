@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 
 const meta: Meta<typeof RhfCombobox> = {
   component: RhfCombobox,
-  title: 'Bako UI/Form/RhfCombobox',
+  title: 'Bako UI/Rhf/RhfCombobox',
   tags: ['autodocs'],
   argTypes: {
     disabled: {

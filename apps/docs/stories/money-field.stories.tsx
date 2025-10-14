@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { MoneyField } from '../../../packages/ui/src/components/MoneyField/money-field';
 
 const meta: Meta<typeof MoneyField> = {
-  title: 'Bako UI/MoneyField',
+  title: 'Bako UI/Form/MoneyField',
   component: MoneyField,
   tags: ['autodocs'],
   argTypes: {
