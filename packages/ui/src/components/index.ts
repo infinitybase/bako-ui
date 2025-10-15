@@ -12,6 +12,7 @@ export * from './Badge';
 export * from './Button';
 export * from './Card';
 export * from './Clipboard';
+export * from './CloseButton';
 export * from './Container';
 export * from './IconButton';
 export * from './QrCode';
@@ -62,6 +63,7 @@ export {
   ButtonGroup,
   Span,
   ClientOnly,
+  createIcon,
 } from '@chakra-ui/react';
 
 export type { SpanProps, ClientOnlyProps } from '@chakra-ui/react';
