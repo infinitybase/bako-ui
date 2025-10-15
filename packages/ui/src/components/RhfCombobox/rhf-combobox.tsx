@@ -31,6 +31,23 @@ function ComboboxHiddenInput(props: React.ComponentProps<'input'>) {
   return <input type="hidden" {...props} />;
 }
 
+/**
+ * @description A combobox component integrated with react-hook-form and Chakra UI.
+ *
+ * @example
+ * const { control } = useForm();
+ *
+ * <RhfCombobox
+ *   name="fruit"
+ *   control={control}
+ *   label="Select a fruit"
+ *   options={[
+ *     { label: 'Apple', value: 'apple' },
+ *     { label: 'Banana', value: 'banana' },
+ *     { label: 'Cherry', value: 'cherry' },
+ *   ]}
+ * />
+ */
 export function RhfCombobox<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>,
@@ -51,6 +68,7 @@ export function RhfCombobox<
   clearTriggerIcon,
   showTrigger = false,
   allowCustomValue = true,
+  onInputValueChange,
 }: RhfComboboxProps<TFieldValues, TName>) {
   const {
     field: { value, onChange, ref, ...rest },
@@ -64,14 +82,9 @@ export function RhfCombobox<
   const [inputValue, setInputValue] = useState(value || '');
   const [isTyping, setIsTyping] = useState(false);
 
-  // Sincroniza o inputValue com o value do form quando ele muda externamente
-  // Mas NÃO quando o usuário está digitando (allowCustomValue)
   useEffect(() => {
-    // Se o usuário está digitando, não sobrescreve o inputValue
     if (isTyping) return;
 
-    // Atualiza apenas se o value do form for diferente do inputValue local
-    // Isso é importante para defaultValue e reset do form
     if (value !== inputValue) {
       setInputValue(value || '');
     }
@@ -80,46 +93,39 @@ export function RhfCombobox<
   const handleValueChange = useCallback(
     (details: ComboboxValueChangeDetails<RhfComboboxOptions>) => {
       const newValue = details.value[0] || '';
-      setIsTyping(false); // Reset typing state quando seleciona um item
+      setIsTyping(false);
       onChange(newValue);
       setInputValue(newValue);
+      onInputValueChange?.(newValue);
     },
-    [onChange]
+    [onChange, onInputValueChange]
   );
 
   const handleInputValueChange = useCallback(
     (details: ComboboxInputValueChangeDetails) => {
-      // Marca que o usuário está digitando para evitar que o useEffect sobrescreva
       setIsTyping(true);
 
-      // Atualiza o estado local do inputValue
       setInputValue(details.inputValue);
 
-      // Filtra as opções baseado no que o usuário digita
-      // Usando flushSync para garantir que o filtro aconteça antes do próximo render
       flushSync(() => {
         filter(details.inputValue);
       });
 
-      // Se allowCustomValue está habilitado, atualiza o form conforme digita
+      onInputValueChange?.(details.inputValue);
       if (allowCustomValue) {
         onChange(details.inputValue);
       }
 
-      // Após um tempo, permite que o useEffect volte a sincronizar
       setTimeout(() => setIsTyping(false), 100);
     },
-    [filter, allowCustomValue, onChange]
+    [filter, allowCustomValue, onChange, onInputValueChange]
   );
 
   const handleOpenChange = useCallback(
     (details: ComboboxOpenChangeDetails) => {
-      // Se allowCustomValue está habilitado e está tentando abrir,
-      // verifica se há opções correspondentes para prevenir flicker
       if (allowCustomValue && details.open && inputValue.trim() !== '') {
         const hasMatchingOptions = collection.items.length > 0;
         if (!hasMatchingOptions) {
-          // Não permite abrir se não houver matches (previne flicker)
           return;
         }
       }

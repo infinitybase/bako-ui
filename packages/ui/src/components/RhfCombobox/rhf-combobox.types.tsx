@@ -28,6 +28,7 @@ export type RhfComboboxProps<
   showTrigger?: boolean;
   clearTriggerIcon?: React.ReactNode;
   allowCustomValue?: boolean;
+  onInputValueChange?: (value: string) => void;
   slotProps?: {
     root?: Omit<ComboboxRootProps, 'collection' | 'openOnClick'>;
     label?: FieldLabelProps;
