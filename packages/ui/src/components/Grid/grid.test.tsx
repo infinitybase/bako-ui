@@ -3,7 +3,7 @@ import type React from 'react';
 import { describe, expect, it } from 'vitest';
 import { ChakraWrapper } from '../../helpers/test-utils';
 import { Box } from '../Box';
-import Grid from './grid';
+import { Grid } from './grid';
 
 const renderWithChakra = (ui: React.ReactElement) => {
   return render(ui, { wrapper: ChakraWrapper });
