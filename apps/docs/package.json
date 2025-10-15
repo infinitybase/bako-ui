@@ -9,15 +9,15 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "biome check",
-    "chromatic": "pnpm exec chromatic"
+    "chromatic": "pnpm exec chromatic --project-token chpt_b05b4a7bf8aabfe"
   },
   "dependencies": {
-    "@bako/ui": "workspace:*",
+    "bako-ui": "workspace:*",
     "@chakra-ui/react": "^3.21.0",
     "@emotion/react": "^11.14.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-hook-form": "^7.58.1",
+    "react-hook-form": "^7.65.0",
     "react-icons": "^5.5.0"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
-import { Button, Clipboard, Input, Stack } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Button, Clipboard, Input, Stack } from 'bako-ui';
 
 const meta = {
   title: 'Bako UI/Data Display/Clipboard',

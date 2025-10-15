@@ -1,6 +1,6 @@
-import { Button, Drawer } from '@bako/ui';
 import { CloseButton } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Button, Drawer } from 'bako-ui';
 
 const meta = {
   title: 'Bako UI/Overlays/Drawer',

@@ -1,5 +1,5 @@
-import { Box, Button, EmptyState, Stack } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Box, Button, EmptyState, Stack } from 'bako-ui';
 
 const meta: Meta<typeof EmptyState.Root> = {
   title: 'Bako UI/Feedback/EmptyState',

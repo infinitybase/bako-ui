@@ -1,5 +1,5 @@
-import { Button, createToaster, Loader, Portal, Stack, Toast } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Button, createToaster, Loader, Portal, Stack, Toast } from 'bako-ui';
 
 // Create a single toaster instance for all stories
 const demoToaster = createToaster({

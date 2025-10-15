@@ -1,6 +1,6 @@
-import { Checkbox } from '@bako/ui';
 import { Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Checkbox } from 'bako-ui';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Bako UI/Form/Checkbox',

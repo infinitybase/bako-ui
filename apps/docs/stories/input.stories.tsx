@@ -1,6 +1,6 @@
-import { Input } from '@bako/ui';
 import { Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Input } from 'bako-ui';
 
 const meta: Meta<typeof Input> = {
   title: 'Bako UI/Form/Input',

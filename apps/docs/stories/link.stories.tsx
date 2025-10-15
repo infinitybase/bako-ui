@@ -1,8 +1,8 @@
-import { Link, Text, VStack } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Link, Text, VStack } from 'bako-ui';
 
 const meta: Meta<typeof Link> = {
-  title: 'Bako UI/Link',
+  title: 'Bako UI/Typography/Link',
   component: Link,
   tags: ['autodocs'],
   argTypes: {
@@ -42,28 +42,28 @@ export const WithVariants: Story = {
   ),
 };
 
-export const WithColorPalettes: Story = {
+export const Colors: Story = {
   render: () => (
     <VStack gap={4} alignItems="flex-start">
-      <Link href="https://example.com" colorPalette="gray">
+      <Link href="https://example.com" color="gray">
         Gray link
       </Link>
-      <Link href="https://example.com" colorPalette="red">
+      <Link href="https://example.com" color="red">
         Red link
       </Link>
-      <Link href="https://example.com" colorPalette="orange">
+      <Link href="https://example.com" color="orange">
         Orange link
       </Link>
-      <Link href="https://example.com" colorPalette="green">
+      <Link href="https://example.com" color="green">
         Green link
       </Link>
-      <Link href="https://example.com" colorPalette="blue">
+      <Link href="https://example.com" color="blue">
         Blue link
       </Link>
-      <Link href="https://example.com" colorPalette="teal">
+      <Link href="https://example.com" color="teal">
         Teal link
       </Link>
-      <Link href="https://example.com" colorPalette="purple">
+      <Link href="https://example.com" color="purple">
         Purple link
       </Link>
     </VStack>

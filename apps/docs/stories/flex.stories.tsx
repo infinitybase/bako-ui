@@ -1,5 +1,5 @@
-import { Box, Flex, Heading, Stack, Text } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Box, Flex, Heading, Stack, Text } from 'bako-ui';
 
 const meta: Meta<typeof Flex> = {
   component: Flex,

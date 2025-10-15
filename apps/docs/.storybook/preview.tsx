@@ -1,4 +1,4 @@
-import { theme, ThemeProvider } from '@bako/ui';
+import { theme, ThemeProvider } from 'bako-ui';
 import { withThemeByClassName } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/react';
 

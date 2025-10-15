@@ -1,5 +1,5 @@
-import { Breadcrumb } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Breadcrumb } from 'bako-ui';
 
 const meta: Meta<typeof Breadcrumb.Root> = {
   title: 'Bako UI/Disclosure/Breadcrumb',

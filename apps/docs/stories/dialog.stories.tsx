@@ -1,6 +1,6 @@
-import { Button, Dialog } from '@bako/ui';
 import { Portal } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Button, Dialog } from 'bako-ui';
 
 const meta = {
   title: 'Bako UI/Overlays/Dialog',

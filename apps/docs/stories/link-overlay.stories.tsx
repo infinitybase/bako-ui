@@ -1,9 +1,9 @@
-import { Box, Heading, LinkOverlay, Text, VStack } from '@bako/ui';
 import { LinkBox } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Box, Heading, LinkOverlay, Text, VStack } from 'bako-ui';
 
 const meta: Meta<typeof LinkOverlay> = {
-  title: 'Bako UI/LinkOverlay',
+  title: 'Bako UI/Typography/LinkOverlay',
   component: LinkOverlay,
   tags: ['autodocs'],
   argTypes: {

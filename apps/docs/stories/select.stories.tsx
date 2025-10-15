@@ -1,5 +1,5 @@
-import { createListCollection, Select, Stack } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { createListCollection, Select, Stack } from 'bako-ui';
 
 const frameworks = createListCollection({
   items: [

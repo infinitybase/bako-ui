@@ -1,6 +1,6 @@
-import { IconButton } from '@bako/ui';
 import { Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { IconButton } from 'bako-ui';
 import {
   LuHeart,
   LuPlus,
@@ -11,7 +11,7 @@ import {
 } from 'react-icons/lu';
 
 const meta: Meta<typeof IconButton> = {
-  title: 'Bako UI/IconButton',
+  title: 'Bako UI/Buttons/IconButton',
   component: IconButton,
   tags: ['autodocs'],
   args: {

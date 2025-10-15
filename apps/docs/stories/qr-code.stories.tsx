@@ -1,5 +1,5 @@
-import { Button, QrCode, Stack } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Button, QrCode, Stack } from 'bako-ui';
 
 const meta = {
   title: 'Bako UI/Data Display/QrCode',

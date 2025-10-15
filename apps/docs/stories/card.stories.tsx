@@ -1,5 +1,5 @@
-import { Box, Card, Image, Stack, Text } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Box, Card, Image, Stack, Text } from 'bako-ui';
 
 const meta: Meta<typeof Card.Root> = {
   component: Card.Root,

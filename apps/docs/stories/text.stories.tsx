@@ -1,5 +1,5 @@
-import { Box, Stack, Text, VStack } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Box, Stack, Text, VStack } from 'bako-ui';
 
 const meta: Meta<typeof Text> = {
   component: Text,

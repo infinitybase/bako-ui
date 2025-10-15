@@ -1,5 +1,5 @@
-import { Tabs } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Tabs } from 'bako-ui';
 
 const meta: Meta<typeof Tabs.Root> = {
   title: 'Bako UI/Disclosure/Tabs',

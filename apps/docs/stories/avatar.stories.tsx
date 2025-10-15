@@ -1,6 +1,6 @@
-import { Avatar, AvatarGroup } from '@bako/ui';
 import { Box, Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Avatar, AvatarGroup } from 'bako-ui';
 
 const meta: Meta<typeof Avatar> = {
   title: 'Bako UI/Data Display/Avatar',

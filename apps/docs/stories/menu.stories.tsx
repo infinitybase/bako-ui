@@ -1,5 +1,5 @@
-import { Button, Menu } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Button, Menu } from 'bako-ui';
 
 const meta = {
   title: 'Bako UI/Overlays/Menu',

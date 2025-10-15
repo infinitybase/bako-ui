@@ -1,5 +1,5 @@
-import { Badge, Stack } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Badge, Stack } from 'bako-ui';
 
 const meta = {
   title: 'Bako UI/Data Display/Badge',

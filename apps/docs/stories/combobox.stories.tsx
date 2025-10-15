@@ -1,5 +1,5 @@
-import { Box, Combobox, createListCollection } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Box, Combobox, createListCollection } from 'bako-ui';
 
 const meta: Meta<typeof Combobox.Root> = {
   title: 'Bako UI/Form/Combobox',

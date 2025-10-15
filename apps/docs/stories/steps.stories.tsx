@@ -1,5 +1,5 @@
-import { Button, Steps } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Button, Steps } from 'bako-ui';
 
 const meta: Meta<typeof Steps.Root> = {
   title: 'Bako UI/Disclosure/Steps',

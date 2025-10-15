@@ -1,5 +1,5 @@
-import { Box, Heading, HStack, Separator, Stack, Text } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Box, Heading, HStack, Separator, Stack, Text } from 'bako-ui';
 
 const meta: Meta<typeof Separator> = {
   component: Separator,

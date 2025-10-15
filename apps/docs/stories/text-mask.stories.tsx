@@ -1,5 +1,5 @@
-import { Stack, TextMask } from '@bako/ui';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Stack, TextMask } from 'bako-ui';
 
 const meta: Meta<typeof TextMask> = {
   title: 'Bako UI/TextMask',
