@@ -1,6 +1,8 @@
 import {
-  Badge,
   Combobox,
+  type ComboboxInputValueChangeDetails,
+  type ComboboxOpenChangeDetails,
+  type ComboboxValueChangeDetails,
   Field,
   Flex,
   HStack,
@@ -8,18 +10,26 @@ import {
   Portal,
   Span,
   Spinner,
-  useCombobox,
   useFilter,
   useListCollection,
 } from '@chakra-ui/react';
-import { useMemo } from 'react';
+import type React from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { flushSync } from 'react-dom';
 import {
   type FieldPath,
   type FieldValues,
   useController,
 } from 'react-hook-form';
 import { floatingStyles } from '../../helpers/floating-styles';
-import type { RhfComboboxProps } from './rhf-combobox.types';
+import type {
+  RhfComboboxOptions,
+  RhfComboboxProps,
+} from './rhf-combobox.types';
+
+function ComboboxHiddenInput(props: React.ComponentProps<'input'>) {
+  return <input type="hidden" {...props} />;
+}
 
 export function RhfCombobox<
   TFieldValues extends FieldValues,
@@ -33,7 +43,6 @@ export function RhfCombobox<
   options,
   disabled = false,
   helperText,
-  multiple = false,
   isLoadingOptions = false,
   noOptionsText = 'No items found',
   openOnFocus = true,
@@ -41,6 +50,7 @@ export function RhfCombobox<
   variant,
   clearTriggerIcon,
   showTrigger = false,
+  allowCustomValue = true,
 }: RhfComboboxProps<TFieldValues, TName>) {
   const {
     field: { value, onChange, ref, ...rest },
@@ -51,36 +61,83 @@ export function RhfCombobox<
     filter: contains,
   });
 
-  const combobox = useCombobox({
-    collection,
-    onInputValueChange(e) {
-      filter(e.inputValue);
-    },
-    onValueChange(selected) {
-      if (selected) {
-        if (multiple) {
-          onChange(selected.value);
-        } else {
-          onChange(selected.value[0]);
-        }
-      }
-    },
-    value: [...(value || [])],
-    disabled,
-    invalid: !!error,
-    multiple,
-    openOnClick: openOnFocus,
-    ...slotProps?.root,
-  });
+  const [inputValue, setInputValue] = useState(value || '');
+  const [isTyping, setIsTyping] = useState(false);
 
-  const hasValue = useMemo(
-    () =>
-      (Array.isArray(value) ? false : !!value) ||
-      combobox.inputValue.length > 0,
-    [value, combobox.inputValue]
+  // Sincroniza o inputValue com o value do form quando ele muda externamente
+  // Mas NÃO quando o usuário está digitando (allowCustomValue)
+  useEffect(() => {
+    // Se o usuário está digitando, não sobrescreve o inputValue
+    if (isTyping) return;
+
+    // Atualiza apenas se o value do form for diferente do inputValue local
+    // Isso é importante para defaultValue e reset do form
+    if (value !== inputValue) {
+      setInputValue(value || '');
+    }
+  }, [value, inputValue, isTyping]);
+
+  const handleValueChange = useCallback(
+    (details: ComboboxValueChangeDetails<RhfComboboxOptions>) => {
+      const newValue = details.value[0] || '';
+      setIsTyping(false); // Reset typing state quando seleciona um item
+      onChange(newValue);
+      setInputValue(newValue);
+    },
+    [onChange]
   );
 
-  const activeFloating = hasValue || combobox.open;
+  const handleInputValueChange = useCallback(
+    (details: ComboboxInputValueChangeDetails) => {
+      // Marca que o usuário está digitando para evitar que o useEffect sobrescreva
+      setIsTyping(true);
+
+      // Atualiza o estado local do inputValue
+      setInputValue(details.inputValue);
+
+      // Filtra as opções baseado no que o usuário digita
+      // Usando flushSync para garantir que o filtro aconteça antes do próximo render
+      flushSync(() => {
+        filter(details.inputValue);
+      });
+
+      // Se allowCustomValue está habilitado, atualiza o form conforme digita
+      if (allowCustomValue) {
+        onChange(details.inputValue);
+      }
+
+      // Após um tempo, permite que o useEffect volte a sincronizar
+      setTimeout(() => setIsTyping(false), 100);
+    },
+    [filter, allowCustomValue, onChange]
+  );
+
+  const handleOpenChange = useCallback(
+    (details: ComboboxOpenChangeDetails) => {
+      // Se allowCustomValue está habilitado e está tentando abrir,
+      // verifica se há opções correspondentes para prevenir flicker
+      if (allowCustomValue && details.open && inputValue.trim() !== '') {
+        const hasMatchingOptions = collection.items.length > 0;
+        if (!hasMatchingOptions) {
+          // Não permite abrir se não houver matches (previne flicker)
+          return;
+        }
+      }
+      slotProps?.root?.onOpenChange?.(details);
+    },
+    [slotProps?.root, allowCustomValue, inputValue, collection.items.length]
+  );
+
+  const hasValue = useMemo(() => {
+    if (!value) {
+      return false;
+    }
+    if (Array.isArray(value)) {
+      return value.length > 0;
+    }
+    const stringValue = typeof value === 'string' ? value : String(value);
+    return !!stringValue || stringValue.length > 0;
+  }, [value]);
 
   const inputProps = label
     ? {
@@ -98,52 +155,69 @@ export function RhfCombobox<
           htmlFor={rest.name}
           {...slotProps?.label}
           css={floatingStyles({
-            hasValue: activeFloating,
+            hasValue,
             withStartIcon: false,
           })}
         >
           {label}
         </Field.Label>
       )}
-      <Combobox.RootProvider
-        value={combobox}
+      <Combobox.Root
+        collection={collection}
         width="full"
-        size={slotProps?.root?.size}
         variant={variant}
+        inputValue={inputValue}
+        value={value ? [value] : []}
         borderRadius="lg"
+        onValueChange={handleValueChange}
+        onOpenChange={handleOpenChange}
+        onInputValueChange={handleInputValueChange}
+        disabled={disabled}
+        openOnClick={openOnFocus}
+        multiple={false}
+        invalid={!!error}
+        allowCustomValue={allowCustomValue}
+        selectionBehavior="preserve"
+        defaultValue={[defaultValue || '']}
+        {...slotProps?.root}
       >
         <Combobox.Control>
-          <Combobox.Input color="fg" ref={ref} {...inputProps} {...rest} />
+          <Combobox.Input
+            color="fg"
+            ref={ref}
+            {...inputProps}
+            {...slotProps?.input}
+          />
           <Combobox.IndicatorGroup>
             {clearTriggerIcon ? (
-              <Combobox.ClearTrigger color="unset" asChild>
+              <Combobox.ClearTrigger hidden={!hasValue} color="unset" asChild>
                 {clearTriggerIcon}
               </Combobox.ClearTrigger>
             ) : (
-              <Combobox.ClearTrigger color="unset" />
+              <Combobox.ClearTrigger hidden={!hasValue} color="unset" />
             )}
             {showTrigger && <Combobox.Trigger />}
           </Combobox.IndicatorGroup>
         </Combobox.Control>
-        {multiple && (
-          <Flex gap={2} flexWrap="wrap" position="absolute" bottom={-7}>
-            {(value as string[]).map((item) => (
-              <Badge key={item}>{item}</Badge>
-            ))}
-          </Flex>
-        )}
+
+        <ComboboxHiddenInput name={rest.name} value={value || ''} />
+
         {helperText && <Field.HelperText>{helperText}</Field.HelperText>}
         {error && <Field.ErrorText>{error.message}</Field.ErrorText>}
         <Portal>
           <Combobox.Positioner>
             <Combobox.Content>
-              <Combobox.Empty>{noOptionsText}</Combobox.Empty>
+              {!allowCustomValue && (
+                <Combobox.Empty>{noOptionsText}</Combobox.Empty>
+              )}
+
               {isLoadingOptions && (
                 <HStack p="2">
                   <Spinner size="xs" borderWidth="1px" />
                   <Span>Loading...</Span>
                 </HStack>
               )}
+
               {!isLoadingOptions &&
                 collection.items.map((item) => (
                   <Combobox.Item item={item} key={item.value}>
@@ -164,7 +238,7 @@ export function RhfCombobox<
             </Combobox.Content>
           </Combobox.Positioner>
         </Portal>
-      </Combobox.RootProvider>
+      </Combobox.Root>
     </Field.Root>
   );
 }

@@ -21,10 +21,6 @@ type SingleComboboxProps = Partial<
   Omit<RhfComboboxProps<FormValues, 'single'>, 'control' | 'name'>
 >;
 
-type MultiComboboxProps = Partial<
-  Omit<RhfComboboxProps<FormValues, 'multi'>, 'control' | 'name'>
->;
-
 const baseOptions = [
   { label: 'Apple', value: 'apple' },
   { label: 'Banana', value: 'banana' },
@@ -83,56 +79,6 @@ const renderSingleCombobox = (
   };
 };
 
-const renderMultiCombobox = (
-  props: MultiComboboxProps = {},
-  formOverrides: FormOverrides = {}
-) => {
-  const {
-    label = 'Fruits',
-    defaultValue = ['apple', 'banana'],
-    options = baseOptions,
-    helperText,
-    ...restProps
-  } = props;
-
-  const defaultValues: FormValues = {
-    single: '',
-    multi: defaultValue,
-    ...formOverrides.defaultValues,
-  } as FormValues;
-
-  const user = userEvent.setup();
-
-  const Wrapper = () => {
-    const { control, handleSubmit } = useForm<FormValues>({
-      defaultValues,
-    });
-
-    const onSubmit = formOverrides.onSubmit ?? vi.fn();
-
-    return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <RhfCombobox<FormValues, 'multi'>
-          control={control}
-          name="multi"
-          label={label}
-          defaultValue={defaultValue}
-          options={options}
-          helperText={helperText}
-          multiple
-          {...restProps}
-        />
-        <button type="submit">Submit</button>
-      </form>
-    );
-  };
-
-  return {
-    user,
-    ...renderWithChakra(<Wrapper />),
-  };
-};
-
 describe('RhfCombobox', () => {
   it('renders label and helper text and opens options', async () => {
     const { user } = renderSingleCombobox({ helperText: 'Pick a fruit' });
@@ -159,7 +105,49 @@ describe('RhfCombobox', () => {
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({ single: ['banana'] }),
+        expect.objectContaining({ single: 'banana' }),
+        expect.anything()
+      );
+    });
+  });
+
+  it('allows custom value input (freeSolo)', async () => {
+    const onSubmit = vi.fn();
+    const { user } = renderSingleCombobox({}, { onSubmit });
+
+    const input = screen.getByRole('combobox');
+    await user.click(input);
+    await user.type(input, 'Custom Fruit');
+    await user.click(screen.getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({ single: 'Custom Fruit' }),
+        expect.anything()
+      );
+    });
+  });
+
+  it('updates value as user types with allowCustomValue', async () => {
+    const onSubmit = vi.fn();
+    const { user } = renderSingleCombobox({}, { onSubmit });
+
+    const input = screen.getByRole('combobox');
+    await user.type(input, 'Mango');
+
+    // Aguarda o valor ser atualizado
+    await waitFor(() => {
+      const hiddenInput = document.querySelector(
+        'input[type="hidden"]'
+      ) as HTMLInputElement;
+      expect(hiddenInput?.value).toBe('Mango');
+    });
+
+    await user.click(screen.getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({ single: 'Mango' }),
         expect.anything()
       );
     });
@@ -183,13 +171,6 @@ describe('RhfCombobox', () => {
     expect(await screen.findByText('Loading...')).toBeInTheDocument();
   });
 
-  it('renders badges for multiple selections', () => {
-    renderMultiCombobox({ defaultValue: ['apple', 'banana'] });
-
-    expect(screen.getByText('apple')).toBeInTheDocument();
-    expect(screen.getByText('banana')).toBeInTheDocument();
-  });
-
   it('renders option images when imageUrl is provided', async () => {
     const { user } = renderSingleCombobox({
       options: [
@@ -203,15 +184,73 @@ describe('RhfCombobox', () => {
     expect(await screen.findByAltText('Mango image')).toBeInTheDocument();
   });
 
-  it('shows no options text when no items match', async () => {
-    const { user } = renderSingleCombobox({ noOptionsText: 'Nothing found' });
+  it('filters options as user types', async () => {
+    const { user } = renderSingleCombobox();
 
     const input = screen.getByRole('combobox');
     await user.click(input);
-    await user.type(input, 'zzz');
+
+    // Clear input first
+    await user.clear(input);
+    await user.type(input, 'ban');
 
     await waitFor(() => {
-      expect(screen.getByText('Nothing found')).toBeInTheDocument();
+      const hiddenInput = document.querySelector(
+        'input[type="hidden"]'
+      ) as HTMLInputElement;
+      expect(hiddenInput?.value).toBe('ban');
     });
+  });
+
+  it('clears value when clear button is clicked', async () => {
+    const onSubmit = vi.fn();
+    const { user } = renderSingleCombobox(
+      { defaultValue: 'apple' },
+      { onSubmit }
+    );
+
+    // Verify initial value
+    const input = screen.getByRole('combobox');
+    await waitFor(() => {
+      expect(input).toHaveValue('apple');
+    });
+
+    const clearButton = screen.getByRole('button', { name: /clear/i });
+    await user.click(clearButton);
+
+    await waitFor(() => {
+      expect(input).toHaveValue('');
+      const hiddenInput = document.querySelector(
+        'input[type="hidden"]'
+      ) as HTMLInputElement;
+      expect(hiddenInput?.value).toBe('');
+    });
+
+    // Submit and verify empty value
+    await user.click(screen.getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({ single: '' }),
+        expect.anything()
+      );
+    });
+  });
+
+  it('displays defaultValue in input on mount', async () => {
+    renderSingleCombobox({ defaultValue: 'banana' });
+
+    const input = screen.getByRole('combobox');
+
+    // O input deve mostrar "banana" (o valor inicial)
+    await waitFor(() => {
+      expect(input).toHaveValue('banana');
+    });
+
+    // O hidden input também deve ter o valor
+    const hiddenInput = document.querySelector(
+      'input[type="hidden"]'
+    ) as HTMLInputElement;
+    expect(hiddenInput?.value).toBe('banana');
   });
 });

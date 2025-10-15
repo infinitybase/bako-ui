@@ -6,8 +6,9 @@ import type {
   UseControllerProps,
 } from 'react-hook-form';
 import type { EnumOption } from '../../types/common';
+import type { InputProps } from '../Input';
 
-type RhfComboboxOptions =
+export type RhfComboboxOptions =
   | (EnumOption & { imageUrl?: never })
   | (EnumOption & { imageUrl: string });
 
@@ -15,20 +16,21 @@ export type RhfComboboxProps<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>,
 > = UseControllerProps<TFieldValues, TName> & {
-  label?: string;
   options: RhfComboboxOptions[];
+  label?: string;
   helperText?: string;
   disabled?: boolean;
   error?: FieldError;
-  slotProps?: {
-    root?: Omit<ComboboxRootProps, 'collection' | 'openOnClick'>;
-    label?: FieldLabelProps;
-  };
-  multiple?: boolean;
   noOptionsText?: string;
   isLoadingOptions?: boolean;
   openOnFocus?: boolean;
   variant?: ComboboxRootProps['variant'];
   showTrigger?: boolean;
   clearTriggerIcon?: React.ReactNode;
+  allowCustomValue?: boolean;
+  slotProps?: {
+    root?: Omit<ComboboxRootProps, 'collection' | 'openOnClick'>;
+    label?: FieldLabelProps;
+    input?: Omit<InputProps, 'value' | 'onChange' | 'disabled' | 'type'>;
+  };
 };

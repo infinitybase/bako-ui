@@ -1,6 +1,6 @@
-import { RhfCombobox } from '@bako/ui';
 import { Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { RhfCombobox } from 'bako-ui';
 import { useForm } from 'react-hook-form';
 
 const meta: Meta<typeof RhfCombobox> = {
@@ -68,24 +68,6 @@ export const Sizes: Story = {
   },
 };
 
-export const Multiple: Story = {
-  render: (args) => {
-    const { control } = useForm();
-
-    return <RhfCombobox control={control} {...args} multiple />;
-  },
-  args: {
-    disabled: false,
-    name: 'name',
-    defaultValue: [],
-    label: 'Select options',
-    options: colors.map((color) => ({
-      label: color,
-      value: color.toLowerCase(),
-    })),
-  },
-};
-
 export const OptionsWithImage: Story = {
   render: (args) => {
     const { control } = useForm();
@@ -108,6 +90,46 @@ export const OptionsWithImage: Story = {
         value: 'ice-cream',
         imageUrl: '/ice-cream.png',
       },
+    ],
+  },
+};
+
+export const FreeSolo: Story = {
+  render: (args) => {
+    const { control, handleSubmit } = useForm();
+
+    return (
+      <form
+        onSubmit={handleSubmit((data) => {
+          console.log('Form submitted:', data);
+          alert(`Selected value: ${data.fruit}`);
+        })}
+      >
+        <Stack gap={4}>
+          <RhfCombobox control={control} {...args} />
+          <button
+            type="submit"
+            style={{ padding: '8px 16px', borderRadius: '4px' }}
+          >
+            Submit
+          </button>
+        </Stack>
+      </form>
+    );
+  },
+  args: {
+    disabled: false,
+    name: 'fruit',
+    defaultValue: '',
+    label: 'Select or type a fruit',
+    helperText:
+      'Type something not in the list (e.g., "Mango") - the dropdown will NOT open!',
+    allowCustomValue: true,
+    options: [
+      { label: 'Apple', value: 'apple' },
+      { label: 'Banana', value: 'banana' },
+      { label: 'Orange', value: 'orange' },
+      { label: 'Grape', value: 'grape' },
     ],
   },
 };
