@@ -10,7 +10,7 @@ export const colorsTokens = defineTokens.colors({
     contrast: { value: '{colors.gray.300}' },
   },
 
-  textPrimary: { value: '{colors.gray.50}' },
+  textPrimary: { value: '{colors.gray.100}' },
   textSecondary: { value: '{colors.gray.300}' },
   background: { value: '#0D0D0C' },
 
