@@ -41,6 +41,7 @@ export * from './TextMask';
 // Feedback & Overlay Components
 export * from './Avatar';
 export * from './EmptyState';
+export * from './Progress';
 export * from './Tooltip';
 export * from './Dialog';
 export * from './Drawer';
