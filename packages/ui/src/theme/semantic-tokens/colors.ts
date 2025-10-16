@@ -34,7 +34,7 @@ export const semanticColors = defineSemanticTokens.colors({
       value: { _light: 'white', _dark: 'white' },
     },
     fg: {
-      value: { _light: '{colors.red.700}', _dark: '{colors.red.300}' },
+      value: { _light: '{colors.red.50}', _dark: '{colors.red.50}' },
     },
     subtle: {
       value: { _light: '{colors.red.100}', _dark: '{colors.red.900}' },
@@ -92,7 +92,7 @@ export const semanticColors = defineSemanticTokens.colors({
       value: { _light: 'white', _dark: 'white' },
     },
     fg: {
-      value: { _light: '{colors.green.300}', _dark: '{colors.green.300}' },
+      value: { _light: '{colors.green.50}', _dark: '{colors.green.50}' },
     },
     subtle: {
       value: { _light: '{colors.green.100}', _dark: '{colors.green.100}' },
@@ -110,13 +110,12 @@ export const semanticColors = defineSemanticTokens.colors({
       value: { _light: '{colors.green.300}', _dark: '{colors.green.300}' },
     },
   },
-
   yellow: {
     contrast: {
       value: { _light: 'black', _dark: 'black' },
     },
     fg: {
-      value: { _light: '{colors.yellow.800}', _dark: '{colors.yellow.300}' },
+      value: { _light: '{colors.yellow.50}', _dark: '{colors.yellow.50}' },
     },
     subtle: {
       value: { _light: '{colors.yellow.150}', _dark: '{colors.yellow.150}' },
@@ -132,6 +131,14 @@ export const semanticColors = defineSemanticTokens.colors({
     },
     focusRing: {
       value: { _light: '{colors.yellow.500}', _dark: '{colors.yellow.500}' },
+    },
+  },
+  blue: {
+    solid: {
+      value: { _light: '{colors.blue.200}', _dark: '{colors.blue.200}' },
+    },
+    fg: {
+      value: { _light: '{colors.blue.50}', _dark: '{colors.blue.50}' },
     },
   },
 });
