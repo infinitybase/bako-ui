@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.2.1
+
+### Patch Changes
+
+- 5a469d4: add freeSolo option to RhfCombobox
+
 ## 0.2.0
 
 ### Minor Changes
