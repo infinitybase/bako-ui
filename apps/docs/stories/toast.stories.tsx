@@ -118,18 +118,80 @@ export const DifferentTypes: Story = {
 
 export const WithAction: Story = {
   render: () => (
-    <Button
-      onClick={() => {
-        demoToaster.create({
-          title: 'File deleted',
-          description: 'Your file has been deleted',
-          meta: {
-            action: 'Undo',
-          },
-        });
-      }}
-    >
-      Delete File
-    </Button>
+    <Stack direction="row" gap="2" wrap="wrap">
+      <Button
+        onClick={() => {
+          demoToaster.create({
+            title: 'Info',
+            description: 'This toast has an action',
+            meta: {
+              action: 'Undo',
+            },
+          });
+        }}
+      >
+        Info
+      </Button>
+
+      <Button
+        onClick={() => {
+          demoToaster.create({
+            title: 'Loading',
+            description: 'This is a loading toast',
+            type: 'loading',
+            meta: {
+              action: 'Cancel',
+            },
+          });
+        }}
+      >
+        Loading
+      </Button>
+
+      <Button
+        onClick={() => {
+          demoToaster.create({
+            title: 'Success',
+            description: 'Operation completed successfully',
+            type: 'success',
+            meta: {
+              action: 'View',
+            },
+          });
+        }}
+      >
+        Success
+      </Button>
+
+      <Button
+        onClick={() => {
+          demoToaster.create({
+            title: 'Warning',
+            description: 'Please be careful',
+            type: 'warning',
+            meta: {
+              action: 'Fix',
+            },
+          });
+        }}
+      >
+        Warning
+      </Button>
+
+      <Button
+        onClick={() => {
+          demoToaster.create({
+            title: 'Error',
+            description: 'Something went wrong',
+            type: 'error',
+            meta: {
+              action: 'Retry',
+            },
+          });
+        }}
+      >
+        Error
+      </Button>
+    </Stack>
   ),
 };
