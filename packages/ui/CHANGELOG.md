@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.2.2
+
+### Patch Changes
+
+- e84ef2d: update tooltip props and add accordion recipe
+
 ## 0.2.1
 
 ### Patch Changes
