@@ -9,10 +9,10 @@ export const semanticColors = defineSemanticTokens.colors({
       },
     },
     panel: {
-      value: { _light: '{colors.gray.600}', _dark: '{colors.gray.600}' },
+      value: { _light: '{colors.gray.700}', _dark: '{colors.gray.700}' },
     },
     muted: {
-      value: { _light: '{colors.gray.500}', _dark: '{colors.gray.500}' },
+      value: { _light: '{colors.gray.600}', _dark: '{colors.gray.600}' },
     },
   },
   fg: {
@@ -82,8 +82,8 @@ export const semanticColors = defineSemanticTokens.colors({
     },
     border: {
       value: {
-        _light: '{colors.gray.600}',
-        _dark: '{colors.gray.600}',
+        _light: '{colors.gray.700}',
+        _dark: '{colors.gray.700}',
       },
     },
   },

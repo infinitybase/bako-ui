@@ -2,11 +2,11 @@ import { defineTokens } from '@chakra-ui/react';
 
 export const colorsTokens = defineTokens.colors({
   primary: {
-    contrast: { value: '{colors.gray.500}' },
+    contrast: { value: '{colors.gray.600}' },
     default: { value: '{colors.yellow.100}' },
   },
   secondary: {
-    default: { value: '{colors.gray.500}' },
+    default: { value: '{colors.gray.600}' },
     contrast: { value: '{colors.gray.300}' },
   },
 
@@ -22,8 +22,10 @@ export const colorsTokens = defineTokens.colors({
     '200': { value: '#AAA6A1' },
     '300': { value: '#868079' },
     '400': { value: '#5E5955' },
-    '500': { value: '#201F1D' },
-    '600': { value: '#151413' },
+    '500': { value: '#353230' },
+    '550': { value: '#2B2927' },
+    '600': { value: '#201F1D' },
+    '700': { value: '#151413' },
   },
 
   yellow: {
