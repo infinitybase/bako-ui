@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.2.3
+
+### Patch Changes
+
+- 6edb03d: add ref prop to button
+
 ## 0.2.2
 
 ### Patch Changes
