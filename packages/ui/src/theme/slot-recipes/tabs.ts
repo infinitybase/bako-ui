@@ -26,6 +26,22 @@ export const tabsSlotRecipe = defineSlotRecipe({
           },
         },
       },
+      subtle: {
+        trigger: {
+          rounded: 'lg',
+          color: 'textSecondary',
+          bg: 'bg.panel',
+          transition: 'all 0.3s',
+          _hover: {
+            bg: 'bg.muted',
+            color: 'textPrimary',
+          },
+          _selected: {
+            color: 'textPrimary',
+            bg: 'bg.muted',
+          },
+        },
+      },
     },
   },
 });
