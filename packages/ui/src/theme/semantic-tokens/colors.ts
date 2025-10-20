@@ -55,8 +55,8 @@ export const semanticColors = defineSemanticTokens.colors({
     },
     solid: {
       value: {
-        _light: '{colors.primary.default}',
-        _dark: '{colors.primary.default}',
+        _light: '{colors.primary.main}',
+        _dark: '{colors.primary.main}',
       },
     },
     muted: {
