@@ -195,3 +195,22 @@ export const Color: Story = {
     </Stack>
   ),
 };
+
+export const AsLink: Story = {
+  name: 'Polymorphism (as Link)',
+  render: () => (
+    <Stack gap={4}>
+      <Button asChild>
+        <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+          External Link
+        </a>
+      </Button>
+      <Button variant="outline" asChild>
+        <a href="#section">Internal Link</a>
+      </Button>
+      <Button variant="ghost" asChild>
+        <a href="/page">Ghost Link Button</a>
+      </Button>
+    </Stack>
+  ),
+};
