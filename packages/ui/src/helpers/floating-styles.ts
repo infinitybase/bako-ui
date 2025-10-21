@@ -13,7 +13,6 @@ export const floatingStyles = ({
     top: hasValue ? '0' : '50%',
     transform: hasValue ? 'none' : 'translateY(-50%)',
     insetStart: withStartIcon ? '9' : '2.5',
-    color: 'bg.emphasized',
     fontWeight: 'normal',
     pointerEvents: 'none',
     transition: 'all 0.2s',

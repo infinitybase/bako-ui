@@ -1,7 +1,7 @@
 // Components
 export * from './components';
 // Helpers
-export * from './helpers/format-number';
+export * from './helpers';
 // Hooks
 export * from './hooks';
 // Icons

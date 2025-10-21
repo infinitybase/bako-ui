@@ -1,4 +1,5 @@
 import { accordionSlotRecipe } from './accordion';
+import { fieldSlotRecipe } from './field';
 import { menuSlotRecipe } from './menu';
 import { progessSlotRecipes } from './progress';
 import { tabsSlotRecipe } from './tabs';
@@ -10,4 +11,5 @@ export const slotRecipes = {
   progress: progessSlotRecipes,
   toast: toastSlotRecipe,
   accordion: accordionSlotRecipe,
+  field: fieldSlotRecipe,
 };

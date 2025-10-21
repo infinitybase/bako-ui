@@ -49,7 +49,7 @@ export function RhfInput<
             pt={2}
             pl={inputGroup?.startElement ? '10' : '3'}
             pr={inputGroup?.endElement ? '10' : '3'}
-            color="fg.inverted"
+            color="fg"
             {...rest}
             {...slotProps?.input}
             {...props}
