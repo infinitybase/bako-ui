@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.2.4
+
+### Patch Changes
+
+- f7d035a: fix RhfInput label color
+
 ## 0.2.3
 
 ### Patch Changes
