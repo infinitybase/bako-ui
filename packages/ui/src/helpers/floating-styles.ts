@@ -2,10 +2,10 @@ import { defineStyle } from '@chakra-ui/react';
 
 export const floatingStyles = ({
   hasValue,
-  withStartIcon,
+  withStartIcon = false,
 }: {
   hasValue: boolean;
-  withStartIcon: boolean;
+  withStartIcon?: boolean;
 }) =>
   defineStyle({
     pos: 'absolute',
