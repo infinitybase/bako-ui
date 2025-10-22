@@ -10,7 +10,7 @@ const preview: Preview = {
       </ThemeProvider>
     ),
     withThemeByClassName({
-      defaultTheme: 'light',
+      defaultTheme: 'dark',
       themes: {
         light: 'light',
         dark: 'dark',
