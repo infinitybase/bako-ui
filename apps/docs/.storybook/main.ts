@@ -29,7 +29,7 @@ const config: StorybookConfig = {
     config.resolve = config.resolve ?? {};
     config.resolve.alias = {
       ...(config.resolve.alias ?? {}),
-      '@bako/ui': fromRoot('../../../packages/ui/src/'),
+      'bako-ui': fromRoot('../../../packages/ui/src/'),
     };
     return config;
   },
