@@ -10,11 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "bako-ui": "workspace:*",
     "@hookform/resolvers": "^5.2.2",
+    "bako-ui": "workspace:*",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.65.0",
+    "recharts": "^3.3.0",
     "zod": "^4.1.12"
   },
   "devDependencies": {
