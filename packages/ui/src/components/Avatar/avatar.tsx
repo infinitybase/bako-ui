@@ -1,18 +1,40 @@
-import { Avatar as ChakraAvatar, Group } from '@chakra-ui/react';
+import { Avatar as ChakraAvatar, Group, useAvatar } from '@chakra-ui/react';
+import { Skeleton, SkeletonCircle } from '../Skeleton';
 import type { AvatarGroupProps, AvatarProps } from './avatar.types';
 
-export function Avatar(props: AvatarProps) {
-  const { name, src, fallback, slotProps, ...rest } = props;
-
+export function Avatar({
+  name,
+  src,
+  fallback,
+  slotProps,
+  shape = 'full',
+  ...rest
+}: AvatarProps) {
+  const avatar = useAvatar();
   const { image: imageProps = {}, fallback: fallbackProps = {} } =
     slotProps || {};
 
+  const SkeletonComponent = shape === 'full' ? SkeletonCircle : Skeleton;
+
+  const isLoading = !!(src && !avatar.loaded);
+
   return (
-    <ChakraAvatar.Root {...rest}>
-      {src && <ChakraAvatar.Image src={src} alt={name} {...imageProps} />}
-      <ChakraAvatar.Fallback name={name} {...fallbackProps}>
-        {fallback || (name ? undefined : <ChakraAvatar.Icon />)}
-      </ChakraAvatar.Fallback>
+    <ChakraAvatar.Root shape={shape} {...rest}>
+      {src && (
+        <SkeletonComponent boxSize="full" loading={isLoading}>
+          <ChakraAvatar.Image
+            onLoad={avatar.setLoaded}
+            src={src}
+            alt={name}
+            {...imageProps}
+          />
+        </SkeletonComponent>
+      )}
+      {!isLoading && (
+        <ChakraAvatar.Fallback name={name} {...fallbackProps}>
+          {fallback || (name ? undefined : <ChakraAvatar.Icon />)}
+        </ChakraAvatar.Fallback>
+      )}
     </ChakraAvatar.Root>
   );
 }

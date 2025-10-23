@@ -8,7 +8,7 @@ const renderWithChakra = (ui: React.ReactElement) => {
 };
 
 describe('Avatar', () => {
-  it('renders with image src and falls back to initials', () => {
+  it('renders with image src and shows skeleton while loading', () => {
     const { container } = renderWithChakra(
       <Avatar src="https://example.com/avatar.jpg" name="John Doe" />
     );
@@ -19,8 +19,12 @@ describe('Avatar', () => {
     expect(img).toHaveAttribute('src', 'https://example.com/avatar.jpg');
     expect(img).toHaveAttribute('alt', 'John Doe');
 
-    // Fallback should also be rendered
-    expect(screen.getByText('JD')).toBeInTheDocument();
+    // Skeleton should be rendered while loading
+    const skeleton = container.querySelector('.chakra-skeleton');
+    expect(skeleton).toBeInTheDocument();
+
+    // Fallback should NOT be rendered while loading
+    expect(screen.queryByText('JD')).not.toBeInTheDocument();
   });
 
   it('renders initials fallback when no src', () => {
@@ -119,7 +123,7 @@ describe('AvatarGroup', () => {
     expect(screen.getByText('BJ')).toBeInTheDocument();
   });
 
-  it('renders with images and fallbacks', () => {
+  it('renders with images and shows skeleton while loading', () => {
     const { container } = renderWithChakra(
       <AvatarGroup>
         <Avatar src="https://example.com/1.jpg" name="User 1" />
@@ -130,8 +134,12 @@ describe('AvatarGroup', () => {
     const images = container.querySelectorAll('img');
     expect(images).toHaveLength(2);
 
-    // Fallbacks should also be rendered
-    expect(screen.getByText('U1')).toBeInTheDocument();
-    expect(screen.getByText('U2')).toBeInTheDocument();
+    // Skeletons should be rendered while loading
+    const skeletons = container.querySelectorAll('.chakra-skeleton');
+    expect(skeletons.length).toBeGreaterThan(0);
+
+    // Fallbacks should NOT be rendered while loading
+    expect(screen.queryByText('U1')).not.toBeInTheDocument();
+    expect(screen.queryByText('U2')).not.toBeInTheDocument();
   });
 });
