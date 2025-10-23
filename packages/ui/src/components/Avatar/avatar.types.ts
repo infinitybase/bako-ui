@@ -9,7 +9,13 @@ export interface AvatarProps extends ChakraAvatar.RootProps {
    * The source URL of the avatar image to display.
    */
   src?: string;
+  /**
+   * The fallback content to display when the image fails to load.
+   */
   fallback?: React.ReactNode;
+  /**
+   * Props to pass to the different slots of the Avatar component
+   */
   slotProps?: {
     image?: ChakraAvatar.ImageProps;
     fallback?: ChakraAvatar.FallbackProps;
