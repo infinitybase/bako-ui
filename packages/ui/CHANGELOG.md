@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.2.5
+
+### Patch Changes
+
+- [#11](https://github.com/infinitybase/bako-ui/pull/11) [`1176466`](https://github.com/infinitybase/bako-ui/commit/117646679e5e9e45f161694b8cec46cd9a49fcc9) Thanks [@Vitosoaresp](https://github.com/Vitosoaresp)! - improve avatar loading with skeleton and export select hooks
+
 ## 0.2.4
 
 ### Patch Changes
