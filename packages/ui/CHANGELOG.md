@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.3.0
+
+### Minor Changes
+
+- [#13](https://github.com/infinitybase/bako-ui/pull/13) [`d87596a`](https://github.com/infinitybase/bako-ui/commit/d87596ab6ea9db1aa2009d76668b667f5809c1fa) Thanks [@Vitosoaresp](https://github.com/Vitosoaresp)! - add float component
+
 ## 0.2.5
 
 ### Patch Changes
