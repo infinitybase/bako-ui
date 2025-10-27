@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.3.1
+
+### Patch Changes
+
+- [`1500093`](https://github.com/infinitybase/bako-ui/commit/150009323542ef0c87855bb5f4a2984525028731) Thanks [@Vitosoaresp](https://github.com/Vitosoaresp)! - update badge recipe
+
 ## 0.3.0
 
 ### Minor Changes
