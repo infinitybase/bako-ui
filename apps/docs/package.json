@@ -9,7 +9,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "biome check",
-    "chromatic": "pnpm exec chromatic --project-token chpt_b05b4a7bf8aabfe"
+    "chromatic": "pnpm exec chromatic"
   },
   "dependencies": {
     "bako-ui": "workspace:*",
