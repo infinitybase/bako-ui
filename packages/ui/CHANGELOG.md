@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.3.2
+
+### Patch Changes
+
+- [`a3e01e0`](https://github.com/infinitybase/bako-ui/commit/a3e01e0201727956ed4dcc7ee8a9396818a893cf) Thanks [@Vitosoaresp](https://github.com/Vitosoaresp)! - fix radio component to show indicator
+
 ## 0.3.1
 
 ### Patch Changes
