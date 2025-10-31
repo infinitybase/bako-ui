@@ -23,6 +23,11 @@ export const semanticColors = defineSemanticTokens.colors({
       value: { _light: '{colors.gray.200}', _dark: '{colors.gray.200}' },
     },
   },
+  border: {
+    emphasized: {
+      value: { _light: '{colors.gray.50}', _dark: '{colors.gray.50}' },
+    },
+  },
   red: {
     solid: {
       value: {
