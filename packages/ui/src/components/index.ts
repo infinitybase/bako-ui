@@ -49,6 +49,9 @@ export * from './Drawer';
 export * from './Popover';
 export * from './Toast';
 
+// Charts
+export * from './Chart';
+
 // Navigation & Layout
 export * from './Accordion';
 export * from './Breadcrumb';

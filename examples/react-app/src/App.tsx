@@ -3,10 +3,11 @@ import { Button, RhfInput, RhfMoneyField } from 'bako-ui';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import z from 'zod/v4';
+import BasicDonutChart from './components/Chart';
 
 const schema = z.object({
   name: z.string().min(3, 'Name must be at least 3 characters long'),
-  amount: z.number().min(1, 'Amount must be at least 1'),
+  amount: z.coerce.number<number>().min(1, 'Amount must be at least 1'),
 });
 
 type Form = z.infer<typeof schema>;
@@ -38,6 +39,7 @@ export default function App() {
       }}
     >
       <h1>Bako UI example</h1>
+      <BasicDonutChart />
       <form
         onSubmit={handleSubmit(handleSubmitForm)}
         style={{

@@ -1,5 +1,4 @@
 import { theme, ThemeProvider } from 'bako-ui';
-import { withThemeByClassName } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/react';
 
 const preview: Preview = {
@@ -9,13 +8,6 @@ const preview: Preview = {
         <Story />
       </ThemeProvider>
     ),
-    withThemeByClassName({
-      defaultTheme: 'light',
-      themes: {
-        light: 'light',
-        dark: 'dark',
-      },
-    }),
   ],
 };
 
