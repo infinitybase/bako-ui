@@ -9,7 +9,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "biome check",
-    "chromatic": "pnpm exec chromatic --project-token chpt_b05b4a7bf8aabfe"
+    "chromatic": "pnpm exec chromatic"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -22,14 +22,13 @@
   },
   "devDependencies": {
     "@bako/ts-config": "workspace:*",
-    "@chromatic-com/storybook": "^4.0.0",
-    "@storybook/addon-a11y": "^9.0.14",
-    "@storybook/addon-docs": "^9.0.14",
-    "@storybook/addon-essentials": "^9.0.0-alpha.12",
-    "@storybook/addon-themes": "^9.1.10",
-    "@storybook/react-vite": "^9.0.12",
+    "@chromatic-com/storybook": "^4.1.2",
+    "@storybook/addon-a11y": "^10.0.1",
+    "@storybook/addon-docs": "^10.0.1",
+    "@storybook/addon-themes": "^10.0.1",
+    "@storybook/react-vite": "^10.0.1",
     "@types/node": "^22.10.1",
-    "storybook": "^9.0.12",
+    "storybook": "^10.0.1",
     "typescript": "^5.8.3"
   }
 }

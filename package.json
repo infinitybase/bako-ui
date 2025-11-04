@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
+    "build:packages": "turbo run build --filter=./packages/*",
     "test": "turbo run test",
     "lint": "turbo run lint",
     "storybook": "turbo run storybook --filter=@bako/docs",
@@ -15,7 +16,7 @@
     "clean": "turbo run clean --parallel",
     "changeset": "pnpm exec changeset",
     "version-packages": "pnpm exec changeset version",
-    "release": "pnpm exec changeset publish --filter @bako/ui"
+    "release": "pnpm build:packages && pnpm exec changeset publish"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.4",

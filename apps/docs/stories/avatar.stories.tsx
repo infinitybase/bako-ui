@@ -41,9 +41,9 @@ export const Sizes: Story = {
 export const Shapes: Story = {
   render: () => (
     <Stack direction="row" gap={4}>
-      <Avatar name="Square" shape="square" />
-      <Avatar name="Rounded" shape="rounded" />
-      <Avatar name="Full" shape="full" />
+      <Avatar src="https://picsum.photos/200/400" shape="square" />
+      <Avatar src="https://picsum.photos/200/400" shape="rounded" />
+      <Avatar src="https://picsum.photos/200/400" shape="full" />
     </Stack>
   ),
 };

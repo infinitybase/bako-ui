@@ -14,4 +14,6 @@ export type {
   SelectRootProps,
   SelectTriggerProps,
   SelectValueTextProps,
+  UseSelectProps,
+  UseSelectReturn,
 } from '@chakra-ui/react';

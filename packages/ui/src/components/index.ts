@@ -6,6 +6,7 @@ export * from './Grid';
 export * from './Text';
 export * from './Heading';
 export * from './Box';
+export * from './Float';
 
 // UI Components
 export * from './Badge';

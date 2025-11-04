@@ -5,17 +5,17 @@ Bako Design System - A modern React component library built with Chakra UI.
 ## Installation
 
 ```bash
-npm install @bako-ui
+npm install bako-ui
 # or
-yarn add @bako-ui
+yarn add bako-ui
 # or
-pnpm add @bako-ui
+pnpm add bako-ui
 ```
 
 ## Usage
 
 ```tsx
-import { Button, RhfInput, theme } from '@bako-ui';
+import { Button, RhfInput, theme } from 'bako-ui';
 import { ChakraProvider } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 
@@ -46,7 +46,7 @@ function App() {
 A versatile button component with multiple variants and states.
 
 ```tsx
-import { Button } from '@bako-ui';
+import { Button } from 'bako-ui';
 
 // Basic usage
 <Button>Click me</Button>
@@ -84,7 +84,7 @@ import { Button } from '@bako-ui';
 A form input component with floating labels, built for React Hook Form integration.
 
 ```tsx
-import { RhfInput } from '@bako-ui';
+import { RhfInput } from 'bako-ui';
 import { useForm } from 'react-hook-form';
 
 function LoginForm() {

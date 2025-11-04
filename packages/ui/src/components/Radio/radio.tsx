@@ -17,7 +17,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
     return (
       <ChakraRadioGroup.Item {...rest}>
         <ChakraRadioGroup.ItemHiddenInput ref={ref} {...inputProps} />
-        <ChakraRadioGroup.ItemControl />
+        <ChakraRadioGroup.ItemIndicator />
         {children != null && (
           <ChakraRadioGroup.ItemText>{children}</ChakraRadioGroup.ItemText>
         )}
