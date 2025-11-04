@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.4.0
+
+### Minor Changes
+
+- [`e7c9ad5`](https://github.com/infinitybase/bako-ui/commit/e7c9ad50d4aa2bebb1352fd8eddc1013acdc2479) Thanks [@Vitosoaresp](https://github.com/Vitosoaresp)! - add charts
+
 ## 0.3.2
 
 ### Patch Changes
