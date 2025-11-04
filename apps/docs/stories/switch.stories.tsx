@@ -1,6 +1,5 @@
-import { Icon, Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { CheckIcon, CloseIcon, Switch } from 'bako-ui';
+import { CheckIcon, CloseIcon, Icon, Stack, Switch } from 'bako-ui';
 
 const meta: Meta<typeof Switch> = {
   title: 'Bako UI/Form/Switch',

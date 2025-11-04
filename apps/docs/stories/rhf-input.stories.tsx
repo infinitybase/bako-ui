@@ -1,6 +1,5 @@
-import { Icon, Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { RhfInput, WalletIcon } from 'bako-ui';
+import { Icon, RhfInput, Stack, WalletIcon } from 'bako-ui';
 import { useForm } from 'react-hook-form';
 
 const meta: Meta<typeof RhfInput> = {

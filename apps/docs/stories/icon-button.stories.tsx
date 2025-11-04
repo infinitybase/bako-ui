@@ -1,6 +1,5 @@
-import { Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { IconButton } from 'bako-ui';
+import { IconButton, Stack } from 'bako-ui';
 import {
   LuHeart,
   LuPlus,

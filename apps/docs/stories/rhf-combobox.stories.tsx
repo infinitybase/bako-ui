@@ -1,6 +1,5 @@
-import { Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { RhfCombobox } from 'bako-ui';
+import { RhfCombobox, Stack } from 'bako-ui';
 import { useForm } from 'react-hook-form';
 
 const meta: Meta<typeof RhfCombobox> = {

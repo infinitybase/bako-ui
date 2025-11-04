@@ -4,8 +4,8 @@
  * These type errors do not affect runtime functionality.
  */
 import type { Meta, StoryObj } from '@storybook/react';
+import { RhfMoneyField } from 'bako-ui';
 import { useForm } from 'react-hook-form';
-import { RhfMoneyField } from '../../../packages/ui/src/components/RhfMoneyField/rhf-money-field';
 
 const meta: Meta<typeof RhfMoneyField> = {
   title: 'Bako UI/Rhf/RhfMoneyField',

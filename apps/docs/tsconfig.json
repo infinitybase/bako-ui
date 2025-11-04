@@ -3,9 +3,9 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@bako/ui": ["../../packages/ui/src"]
+      "bako-ui": ["../../packages/ui/src"]
     },
-    "types": ["node", "vite/client"]
+    "types": ["node"]
   },
   "include": [".storybook/**/*"]
 }

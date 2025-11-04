@@ -1,6 +1,5 @@
-import { Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { TextArea } from 'bako-ui';
+import { Stack, TextArea } from 'bako-ui';
 
 const meta: Meta<typeof TextArea> = {
   title: 'Bako UI/Form/TextArea',

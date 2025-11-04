@@ -1,4 +1,3 @@
-import { Portal } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button, Dialog } from 'bako-ui';
 
@@ -20,7 +19,7 @@ export const Default: Story = {
       <Dialog.Trigger asChild>
         <Button>Open Dialog</Button>
       </Dialog.Trigger>
-      <Portal>
+      <Dialog.Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
           <Dialog.Content>
@@ -37,7 +36,7 @@ export const Default: Story = {
             </Dialog.Footer>
           </Dialog.Content>
         </Dialog.Positioner>
-      </Portal>
+      </Dialog.Portal>
     </Dialog.Root>
   ),
 };

@@ -1,6 +1,5 @@
-import { Box, Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Tooltip } from 'bako-ui';
+import { Box, Button, Stack, Tooltip } from 'bako-ui';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Bako UI/Overlays/Tooltip',

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { MoneyField } from '../../../packages/ui/src/components/MoneyField/money-field';
+import { MoneyField } from 'bako-ui';
 
 const meta: Meta<typeof MoneyField> = {
   title: 'Bako UI/Form/MoneyField',

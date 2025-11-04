@@ -1,12 +1,13 @@
-import { HStack, Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
+  HStack,
   Progress,
   ProgressLabel,
   ProgressRange,
   ProgressRoot,
   ProgressTrack,
   ProgressValueText,
+  Stack,
 } from 'bako-ui';
 
 const meta: Meta<typeof Progress> = {

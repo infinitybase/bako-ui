@@ -1,6 +1,5 @@
-import { Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Radio, RadioGroup } from 'bako-ui';
+import { Radio, RadioGroup, Stack } from 'bako-ui';
 
 const meta: Meta<typeof RadioGroup> = {
   title: 'Bako UI/Form/Radio',

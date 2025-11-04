@@ -15,10 +15,10 @@
     "@emotion/react": "^11.14.0",
     "bako-ui": "workspace:*",
     "react": "^19.1.0",
-    "recharts": "^3.3.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.65.0",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "recharts": "^3.3.0"
   },
   "devDependencies": {
     "@bako/ts-config": "workspace:*",
@@ -26,8 +26,11 @@
     "@storybook/addon-a11y": "^10.0.1",
     "@storybook/addon-docs": "^10.0.1",
     "@storybook/addon-themes": "^10.0.1",
+    "@storybook/react": "^10.0.4",
     "@storybook/react-vite": "^10.0.1",
     "@types/node": "^22.10.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
     "storybook": "^10.0.1",
     "typescript": "^5.8.3"
   }

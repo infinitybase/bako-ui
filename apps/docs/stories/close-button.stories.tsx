@@ -1,6 +1,5 @@
-import { Stack } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { CloseButton } from 'bako-ui';
+import { CloseButton, Stack } from 'bako-ui';
 
 const meta: Meta<typeof CloseButton> = {
   title: 'Bako UI/Buttons/CloseButton',

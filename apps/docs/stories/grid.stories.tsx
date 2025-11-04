@@ -1,6 +1,5 @@
-import { GridItem } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Box, Grid, Text, VStack } from 'bako-ui';
+import { Box, Grid, GridItem, Text, VStack } from 'bako-ui';
 
 const meta: Meta<typeof Grid> = {
   title: 'Bako UI/Layout/Grid',

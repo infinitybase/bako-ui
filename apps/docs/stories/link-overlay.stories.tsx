@@ -1,4 +1,3 @@
-import { LinkBox } from '@chakra-ui/react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Box, Heading, LinkOverlay, Text, VStack } from 'bako-ui';
 
@@ -19,7 +18,7 @@ type Story = StoryObj<typeof LinkOverlay>;
 
 export const Default: Story = {
   render: () => (
-    <LinkBox
+    <Box
       as="article"
       maxW="sm"
       p={5}
@@ -34,13 +33,13 @@ export const Default: Story = {
         This entire card is clickable thanks to LinkOverlay. The link is
         semantically associated with the heading.
       </Text>
-    </LinkBox>
+    </Box>
   ),
 };
 
 export const WithImage: Story = {
   render: () => (
-    <LinkBox
+    <Box
       as="article"
       maxW="sm"
       borderWidth="1px"
@@ -55,14 +54,14 @@ export const WithImage: Story = {
         </Heading>
         <Text>The entire card including the image area is clickable.</Text>
       </Box>
-    </LinkBox>
+    </Box>
   ),
 };
 
 export const MultipleCards: Story = {
   render: () => (
     <VStack gap={4} alignItems="stretch">
-      <LinkBox
+      <Box
         as="article"
         p={5}
         borderWidth="1px"
@@ -77,9 +76,9 @@ export const MultipleCards: Story = {
         <Text fontSize="sm">
           Click anywhere on this card to navigate to the first article.
         </Text>
-      </LinkBox>
+      </Box>
 
-      <LinkBox
+      <Box
         as="article"
         p={5}
         borderWidth="1px"
@@ -94,9 +93,9 @@ export const MultipleCards: Story = {
         <Text fontSize="sm">
           Click anywhere on this card to navigate to the second article.
         </Text>
-      </LinkBox>
+      </Box>
 
-      <LinkBox
+      <Box
         as="article"
         p={5}
         borderWidth="1px"
@@ -111,14 +110,14 @@ export const MultipleCards: Story = {
         <Text fontSize="sm">
           Click anywhere on this card to navigate to the third article.
         </Text>
-      </LinkBox>
+      </Box>
     </VStack>
   ),
 };
 
 export const ExternalLink: Story = {
   render: () => (
-    <LinkBox
+    <Box
       as="article"
       maxW="sm"
       p={5}
@@ -132,13 +131,13 @@ export const ExternalLink: Story = {
         </LinkOverlay>
       </Heading>
       <Text>This card links to an external site and opens in a new tab.</Text>
-    </LinkBox>
+    </Box>
   ),
 };
 
 export const WithMetadata: Story = {
   render: () => (
-    <LinkBox
+    <Box
       as="article"
       maxW="sm"
       p={5}
@@ -156,19 +155,19 @@ export const WithMetadata: Story = {
       </Heading>
       <Text mb={3}>
         Learn how to create accessible card components that are fully clickable
-        using LinkOverlay and LinkBox.
+        using LinkOverlay and Box.
       </Text>
       <Text fontSize="sm" color="gray.600">
         By John Doe • Jan 15, 2024
       </Text>
-    </LinkBox>
+    </Box>
   ),
 };
 
 export const ColoredCards: Story = {
   render: () => (
     <VStack gap={4} alignItems="stretch">
-      <LinkBox
+      <Box
         as="article"
         p={5}
         bg="blue.50"
@@ -181,9 +180,9 @@ export const ColoredCards: Story = {
           <LinkOverlay href="https://example.com">Blue Themed Card</LinkOverlay>
         </Heading>
         <Text color="blue.600">This card has a blue color theme.</Text>
-      </LinkBox>
+      </Box>
 
-      <LinkBox
+      <Box
         as="article"
         p={5}
         bg="green.50"
@@ -198,7 +197,7 @@ export const ColoredCards: Story = {
           </LinkOverlay>
         </Heading>
         <Text color="green.600">This card has a green color theme.</Text>
-      </LinkBox>
+      </Box>
     </VStack>
   ),
 };
