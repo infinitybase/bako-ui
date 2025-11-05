@@ -1,6 +1,9 @@
 import { defineRecipe } from '@chakra-ui/react';
 
 export const inputRecipe = defineRecipe({
+  base: {
+    borderRadius: 'lg',
+  },
   variants: {
     variant: {
       outline: {
