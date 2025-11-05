@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.4.1
+
+### Patch Changes
+
+- [`d36ceee`](https://github.com/infinitybase/bako-ui/commit/d36ceeeccb94853a3864846530808091ae4d9da6) Thanks [@Vitosoaresp](https://github.com/Vitosoaresp)! - fix react types
+
 ## 0.4.0
 
 ### Minor Changes
