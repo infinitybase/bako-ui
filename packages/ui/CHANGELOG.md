@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.4.2
+
+### Patch Changes
+
+- [#20](https://github.com/infinitybase/bako-ui/pull/20) [`ccef5d4`](https://github.com/infinitybase/bako-ui/commit/ccef5d417cb2c75ec3c5290191c79fa785e274cc) Thanks [@Vitosoaresp](https://github.com/Vitosoaresp)! - update default border radius for input and textarea
+
 ## 0.4.1
 
 ### Patch Changes
