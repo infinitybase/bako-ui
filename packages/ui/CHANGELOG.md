@@ -1,5 +1,40 @@
 # @bako/ui
 
+## 0.5.0
+
+### Minor Changes
+
+- [#22](https://github.com/infinitybase/bako-ui/pull/22) [`f50b1a8`](https://github.com/infinitybase/bako-ui/commit/f50b1a894e02f571bc9ab6dc19e201a35399e026) Thanks [@Vitosoaresp](https://github.com/Vitosoaresp)! - Add ScrollArea component
+
+  Added a new ScrollArea component that provides customizable scrollable containers with support for both vertical and horizontal scrolling.
+
+  **Features:**
+  - Vertical and horizontal scrollbars
+  - Customizable scroll behavior
+  - Supports both directions simultaneously
+  - Native scrollbar styling with Chakra UI theming
+  - Fully typed with TypeScript
+
+  **Components:**
+  - `ScrollArea.Root` - Main container component
+  - `ScrollArea.Viewport` - Scrollable content area
+  - `ScrollArea.Scrollbar` - Customizable scrollbar
+  - `ScrollArea.Thumb` - Scrollbar thumb indicator
+  - `ScrollArea.Corner` - Corner element for both scrollbars
+
+  **Usage:**
+
+  ```tsx
+  import { ScrollArea } from "bako-ui";
+
+  <ScrollArea.Root maxW="400px" maxH="300px">
+    <ScrollArea.Viewport>{/* Your content */}</ScrollArea.Viewport>
+    <ScrollArea.Scrollbar orientation="vertical">
+      <ScrollArea.Thumb />
+    </ScrollArea.Scrollbar>
+  </ScrollArea.Root>;
+  ```
+
 ## 0.4.2
 
 ### Patch Changes
