@@ -6,6 +6,7 @@ export const menuSlotRecipe = defineSlotRecipe({
   base: {
     content: {
       color: 'primary.fg',
+      borderRadius: '2xl',
     },
     item: {
       color: 'primary.fg',
