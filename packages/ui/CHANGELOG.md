@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.5.1
+
+### Patch Changes
+
+- [#23](https://github.com/infinitybase/bako-ui/pull/23) [`58cac38`](https://github.com/infinitybase/bako-ui/commit/58cac3837769a851cd72709e8fa3f1e948b66878) Thanks [@Vitosoaresp](https://github.com/Vitosoaresp)! - update border radius in components recipes
+
 ## 0.5.0
 
 ### Minor Changes
