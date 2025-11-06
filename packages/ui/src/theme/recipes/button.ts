@@ -7,5 +7,5 @@ export const buttonRecipe = defineRecipe({
   variants: {
     variant: {},
   },
-  defaultVariants: { colorPalette: 'primary' },
+  defaultVariants: { colorPalette: 'yellow' },
 });
