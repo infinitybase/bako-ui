@@ -34,15 +34,15 @@ export function RhfInput<
 
   return (
     <Field.Root invalid={!!error}>
-      <InputGroup borderRadius="sm" {...inputGroup}>
+      <InputGroup borderRadius="lg" {...inputGroup}>
         <Box position="relative" w="full" {...slotProps?.root}>
           <ChakraInput
             value={value}
             ref={ref}
-            borderTopLeftRadius={inputGroup?.startAddon ? 'none' : 'sm'}
-            borderBottomLeftRadius={inputGroup?.startAddon ? 'none' : 'sm'}
-            borderTopRightRadius={inputGroup?.endAddon ? 'none' : 'sm'}
-            borderBottomRightRadius={inputGroup?.endAddon ? 'none' : 'sm'}
+            borderTopLeftRadius={inputGroup?.startAddon ? 'none' : 'lg'}
+            borderBottomLeftRadius={inputGroup?.startAddon ? 'none' : 'lg'}
+            borderTopRightRadius={inputGroup?.endAddon ? 'none' : 'lg'}
+            borderBottomRightRadius={inputGroup?.endAddon ? 'none' : 'lg'}
             type={type}
             onChange={onChange}
             className={`peer ${slotProps?.input?.className || ''}`}
