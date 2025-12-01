@@ -50,21 +50,23 @@ export function RhfInput<
             pl={inputGroup?.startElement ? '10' : '3'}
             pr={inputGroup?.endElement ? '10' : '3'}
             color="fg"
+            placeholder=" "
             {...rest}
             {...slotProps?.input}
             {...props}
-            placeholder=" "
           />
-          <Field.Label
-            css={floatingStyles({
-              hasValue,
-              withStartIcon: !!inputGroup?.startElement,
-            })}
-            htmlFor={name}
-            {...slotProps?.label}
-          >
-            {label}
-          </Field.Label>
+          {label && (
+            <Field.Label
+              css={floatingStyles({
+                hasValue,
+                withStartIcon: !!inputGroup?.startElement,
+              })}
+              htmlFor={name}
+              {...slotProps?.label}
+            >
+              {label}
+            </Field.Label>
+          )}
         </Box>
       </InputGroup>
       {error?.message && <Field.ErrorText>{error?.message}</Field.ErrorText>}
