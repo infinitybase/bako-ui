@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.5.2
+
+### Patch Changes
+
+- [#26](https://github.com/infinitybase/bako-ui/pull/26) [`fe44f02`](https://github.com/infinitybase/bako-ui/commit/fe44f0237950810cc78da8affd0758823167b1c6) Thanks [@Vitosoaresp](https://github.com/Vitosoaresp)! - Add exported combobox hooks from Chakra UI
+
 ## 0.5.1
 
 ### Patch Changes
