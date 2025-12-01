@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.5.3
+
+### Patch Changes
+
+- [`6221ccc`](https://github.com/infinitybase/bako-ui/commit/6221ccc674f7c9c7b8d458f9054f991b2b604751) Thanks [@Vitosoaresp](https://github.com/Vitosoaresp)! - update rhf-input to use optional label
+
 ## 0.5.2
 
 ### Patch Changes
