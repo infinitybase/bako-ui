@@ -154,6 +154,8 @@ export function RhfCombobox<
       }
     : {};
 
+  const showOptions = isLoadingOptions || collection.items.length > 0;
+
   return (
     <Field.Root invalid={!!error}>
       {label && (
@@ -180,7 +182,7 @@ export function RhfCombobox<
         onOpenChange={handleOpenChange}
         onInputValueChange={handleInputValueChange}
         disabled={disabled}
-        openOnClick={openOnFocus}
+        openOnClick={openOnFocus && showOptions}
         multiple={false}
         invalid={!!error}
         allowCustomValue={allowCustomValue}
@@ -208,42 +210,47 @@ export function RhfCombobox<
           </Combobox.IndicatorGroup>
         </Combobox.Control>
 
-        <ComboboxHiddenInput name={rest.name} value={value || ''} />
+        <ComboboxHiddenInput name={rest.name} value={value ?? ''} />
 
         {helperText && <Field.HelperText>{helperText}</Field.HelperText>}
         {error && <Field.ErrorText>{error.message}</Field.ErrorText>}
         <Portal>
           <Combobox.Positioner>
-            <Combobox.Content>
-              {!allowCustomValue && (
-                <Combobox.Empty>{noOptionsText}</Combobox.Empty>
-              )}
+            {(showOptions || !allowCustomValue) && (
+              <Combobox.Content>
+                {isLoadingOptions && (
+                  <HStack p="2">
+                    <Spinner size="xs" borderWidth="1px" />
+                    <Span>Loading...</Span>
+                  </HStack>
+                )}
 
-              {isLoadingOptions && (
-                <HStack p="2">
-                  <Spinner size="xs" borderWidth="1px" />
-                  <Span>Loading...</Span>
-                </HStack>
-              )}
+                {!isLoadingOptions &&
+                  collection.items.length > 0 &&
+                  collection.items.map((item) => (
+                    <Combobox.Item item={item} key={item.value}>
+                      {!item.imageUrl && item.label}
+                      {item.imageUrl && (
+                        <Flex gap={2} align="center">
+                          <Image
+                            src={item.imageUrl}
+                            boxSize="5"
+                            alt={`${item.label} image`}
+                          />
+                          <Span>{item.label}</Span>
+                        </Flex>
+                      )}
+                      <Combobox.ItemIndicator />
+                    </Combobox.Item>
+                  ))}
 
-              {!isLoadingOptions &&
-                collection.items.map((item) => (
-                  <Combobox.Item item={item} key={item.value}>
-                    {!item.imageUrl && item.label}
-                    {item.imageUrl && (
-                      <Flex gap={2} align="center">
-                        <Image
-                          src={item.imageUrl}
-                          boxSize="5"
-                          alt={`${item.label} image`}
-                        />
-                        <Span>{item.label}</Span>
-                      </Flex>
-                    )}
-                    <Combobox.ItemIndicator />
-                  </Combobox.Item>
-                ))}
-            </Combobox.Content>
+                {!allowCustomValue &&
+                  !isLoadingOptions &&
+                  collection.items.length === 0 && (
+                    <Combobox.Empty>{noOptionsText}</Combobox.Empty>
+                  )}
+              </Combobox.Content>
+            )}
           </Combobox.Positioner>
         </Portal>
       </Combobox.Root>
