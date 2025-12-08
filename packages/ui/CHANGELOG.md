@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.5.5
+
+### Patch Changes
+
+- [#30](https://github.com/infinitybase/bako-ui/pull/30) [`6b8457c`](https://github.com/infinitybase/bako-ui/commit/6b8457c662f5283768a50087bcbe37320736eae3) Thanks [@pedroanastacio](https://github.com/pedroanastacio)! - Add optional placeholder and prevent options menu from opening when it is empty
+
 ## 0.5.4
 
 ### Patch Changes
