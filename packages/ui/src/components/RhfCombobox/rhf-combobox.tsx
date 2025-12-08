@@ -56,6 +56,7 @@ export function RhfCombobox<
   name,
   defaultValue,
   label,
+  placeholder,
   error,
   options,
   disabled = false,
@@ -185,6 +186,7 @@ export function RhfCombobox<
         allowCustomValue={allowCustomValue}
         selectionBehavior="preserve"
         defaultValue={[defaultValue || '']}
+        placeholder={placeholder}
         {...slotProps?.root}
       >
         <Combobox.Control>

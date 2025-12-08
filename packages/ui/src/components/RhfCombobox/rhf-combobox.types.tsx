@@ -18,6 +18,7 @@ export type RhfComboboxProps<
 > = UseControllerProps<TFieldValues, TName> & {
   options: RhfComboboxOptions[];
   label?: string;
+  placeholder?: string;
   helperText?: string;
   disabled?: boolean;
   error?: FieldError;
