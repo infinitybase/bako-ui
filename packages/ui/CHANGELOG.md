@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.5.4
+
+### Patch Changes
+
+- [#29](https://github.com/infinitybase/bako-ui/pull/29) [`c8da11c`](https://github.com/infinitybase/bako-ui/commit/c8da11c841bf78cc286443f2360cf331b6c0da5d) Thanks [@Vitosoaresp](https://github.com/Vitosoaresp)! - bump react to latest version
+
 ## 0.5.3
 
 ### Patch Changes
