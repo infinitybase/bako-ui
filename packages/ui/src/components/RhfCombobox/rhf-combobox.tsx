@@ -213,7 +213,7 @@ export function RhfCombobox<
         <ComboboxHiddenInput name={rest.name} value={value ?? ''} />
 
         {helperText && <Field.HelperText>{helperText}</Field.HelperText>}
-        {error && <Field.ErrorText>{error.message}</Field.ErrorText>}
+        {error?.message && <Field.ErrorText>{error.message}</Field.ErrorText>}
         <Portal>
           <Combobox.Positioner>
             {(showOptions || !allowCustomValue) && (
