@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.5.6
+
+### Patch Changes
+
+- [#33](https://github.com/infinitybase/bako-ui/pull/33) [`36bd402`](https://github.com/infinitybase/bako-ui/commit/36bd402d8460b8f4a3e16c9397384b2c6f93cc2c) Thanks [@pedroanastacio](https://github.com/pedroanastacio)! - (rhf-combobox) displays error message only if it exists
+
 ## 0.5.5
 
 ### Patch Changes
