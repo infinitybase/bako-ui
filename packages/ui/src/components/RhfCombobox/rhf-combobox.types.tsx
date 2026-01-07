@@ -35,4 +35,5 @@ export type RhfComboboxProps<
     label?: FieldLabelProps;
     input?: Omit<InputProps, 'value' | 'onChange' | 'disabled' | 'type'>;
   };
+  onlyLowercase?: boolean;
 };

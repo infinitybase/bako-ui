@@ -69,6 +69,7 @@ export function RhfCombobox<
   clearTriggerIcon,
   showTrigger = false,
   allowCustomValue = true,
+  onlyLowercase = false,
   onInputValueChange,
 }: RhfComboboxProps<TFieldValues, TName>) {
   const {
@@ -80,46 +81,57 @@ export function RhfCombobox<
     filter: contains,
   });
 
-  const [inputValue, setInputValue] = useState(value || '');
+  const normalizeValue = useCallback(
+    (val: string) => {
+      if (!val) return val;
+      return onlyLowercase ? val.toLowerCase() : val;
+    },
+    [onlyLowercase]
+  );
+
+  const [inputValue, setInputValue] = useState(normalizeValue(value || ''));
   const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
     if (isTyping) return;
 
-    if (value !== inputValue) {
-      setInputValue(value || '');
+    const normalizedValue = normalizeValue(value || '');
+    if (normalizedValue !== inputValue) {
+      setInputValue(normalizedValue || '');
     }
-  }, [value, inputValue, isTyping]);
+  }, [value, inputValue, isTyping, normalizeValue]);
 
   const handleValueChange = useCallback(
     (details: ComboboxValueChangeDetails<RhfComboboxOptions>) => {
       const newValue = details.value[0] || '';
+      const normalizedValue = normalizeValue(newValue);
       setIsTyping(false);
-      onChange(newValue);
-      setInputValue(newValue);
-      onInputValueChange?.(newValue);
+      onChange(normalizedValue);
+      setInputValue(normalizedValue);
+      onInputValueChange?.(normalizedValue);
     },
-    [onChange, onInputValueChange]
+    [onChange, onInputValueChange, normalizeValue]
   );
 
   const handleInputValueChange = useCallback(
     (details: ComboboxInputValueChangeDetails) => {
       setIsTyping(true);
 
-      setInputValue(details.inputValue);
+      const normalizedInputValue = normalizeValue(details.inputValue);
+      setInputValue(normalizedInputValue);
 
       flushSync(() => {
-        filter(details.inputValue);
+        filter(normalizedInputValue);
       });
 
-      onInputValueChange?.(details.inputValue);
+      onInputValueChange?.(normalizedInputValue);
       if (allowCustomValue) {
-        onChange(details.inputValue);
+        onChange(normalizedInputValue);
       }
 
       setTimeout(() => setIsTyping(false), 100);
     },
-    [filter, allowCustomValue, onChange, onInputValueChange]
+    [filter, allowCustomValue, onChange, onInputValueChange, normalizeValue]
   );
 
   const handleOpenChange = useCallback(
@@ -176,7 +188,7 @@ export function RhfCombobox<
         width="full"
         variant={variant}
         inputValue={inputValue}
-        value={value ? [value] : []}
+        value={value ? [normalizeValue(value)] : []}
         borderRadius="lg"
         onValueChange={handleValueChange}
         onOpenChange={handleOpenChange}
@@ -187,7 +199,7 @@ export function RhfCombobox<
         invalid={!!error}
         allowCustomValue={allowCustomValue}
         selectionBehavior="preserve"
-        defaultValue={[defaultValue || '']}
+        defaultValue={[normalizeValue(defaultValue || '')]}
         placeholder={placeholder}
         {...slotProps?.root}
       >
@@ -210,7 +222,10 @@ export function RhfCombobox<
           </Combobox.IndicatorGroup>
         </Combobox.Control>
 
-        <ComboboxHiddenInput name={rest.name} value={value ?? ''} />
+        <ComboboxHiddenInput
+          name={rest.name}
+          value={normalizeValue(value ?? '')}
+        />
 
         {helperText && <Field.HelperText>{helperText}</Field.HelperText>}
         {error?.message && <Field.ErrorText>{error.message}</Field.ErrorText>}
