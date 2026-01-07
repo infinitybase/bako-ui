@@ -5,6 +5,9 @@
     "type": "git",
     "url": "git+https://github.com/infinitybase/bako-ui.git"
   },
+  "publishConfig": {
+    "provenance": true
+  },
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
