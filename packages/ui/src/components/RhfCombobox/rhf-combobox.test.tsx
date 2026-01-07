@@ -253,4 +253,87 @@ describe('RhfCombobox', () => {
     ) as HTMLInputElement;
     expect(hiddenInput?.value).toBe('banana');
   });
+
+  it('converts input to lowercase when onlyLowercase is true', async () => {
+    const onSubmit = vi.fn();
+    const { user } = renderSingleCombobox(
+      { onlyLowercase: true },
+      { onSubmit }
+    );
+
+    const input = screen.getByRole('combobox');
+    await user.click(input);
+    await user.type(input, 'BaNaNa');
+
+    // Wait for the value to be normalized to lowercase letters
+    await waitFor(() => {
+      const hiddenInput = document.querySelector(
+        'input[type="hidden"]'
+      ) as HTMLInputElement;
+      expect(hiddenInput?.value).toBe('banana');
+    });
+
+    await user.click(screen.getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({ single: 'banana' }),
+        expect.anything()
+      );
+    });
+  });
+
+  it('converts selected option to lowercase when onlyLowercase is true', async () => {
+    const onSubmit = vi.fn();
+    const { user } = renderSingleCombobox(
+      {
+        onlyLowercase: true,
+        options: [
+          { label: 'Apple', value: 'APPLE' },
+          { label: 'Banana', value: 'BANANA' },
+          { label: 'Cherry', value: 'CHERRY' },
+        ],
+      },
+      { onSubmit }
+    );
+
+    await user.click(screen.getByRole('combobox'));
+    await user.click(await screen.findByText('Banana'));
+
+    await waitFor(() => {
+      const hiddenInput = document.querySelector(
+        'input[type="hidden"]'
+      ) as HTMLInputElement;
+      expect(hiddenInput?.value).toBe('banana');
+    });
+
+    await user.click(screen.getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({ single: 'banana' }),
+        expect.anything()
+      );
+    });
+  });
+
+  it('converts defaultValue to lowercase when onlyLowercase is true', async () => {
+    renderSingleCombobox({
+      defaultValue: 'APPLE',
+      onlyLowercase: true,
+    });
+
+    const input = screen.getByRole('combobox');
+
+    // The input should display “apple” (converted to lowercase)
+    await waitFor(() => {
+      expect(input).toHaveValue('apple');
+    });
+
+    // The hidden input must also have a lowercase value
+    const hiddenInput = document.querySelector(
+      'input[type="hidden"]'
+    ) as HTMLInputElement;
+    expect(hiddenInput?.value).toBe('apple');
+  });
 });
