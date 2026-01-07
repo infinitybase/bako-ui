@@ -16,7 +16,7 @@
     "clean": "turbo run clean --parallel",
     "changeset": "pnpm exec changeset",
     "version-packages": "pnpm exec changeset version",
-    "release": "pnpm build:packages && pnpm exec changeset publish"
+    "release": "pnpm build:packages && pnpm exec changeset publish --ignore-scripts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
