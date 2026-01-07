@@ -1,5 +1,11 @@
 # @bako/ui
 
+## 0.5.7
+
+### Patch Changes
+
+- [#35](https://github.com/infinitybase/bako-ui/pull/35) [`814c3fd`](https://github.com/infinitybase/bako-ui/commit/814c3fd80bac93162c746f02f680f829101ea599) Thanks [@pedroanastacio](https://github.com/pedroanastacio)! - rhf-combobox can work only with lowercase value
+
 ## 0.5.6
 
 ### Patch Changes
