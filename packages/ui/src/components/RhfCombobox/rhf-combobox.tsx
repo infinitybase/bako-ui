@@ -46,6 +46,7 @@ function ComboboxHiddenInput(props: React.ComponentProps<'input'>) {
  *     { label: 'Banana', value: 'banana' },
  *     { label: 'Cherry', value: 'cherry' },
  *   ]}
+ *   onlyLowercase
  * />
  */
 export function RhfCombobox<
